@@ -26,3 +26,8 @@ proguard/
 
 # Log Files
 *.log
+
+###Gradle###
+
+.gradle
+build/
