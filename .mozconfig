@@ -1,0 +1,13 @@
+ANDROID_SDK="/usr/local/lib/android-sdk"
+ANDROID_NDK="/usr/local/lib/android-ndk"
+
+# Build Firefox for Android:
+ac_add_options --enable-application=mobile/android
+
+# Choose one of the following for targets for x86 or ARM
+# ac_add_options --target=i386-linux-android
+ac_add_options --target=arm-linux-androideabi
+
+# With the following Android SDK and NDK:
+ac_add_options --with-android-ndk="$ANDROID_NDK/android-ndk-r11c"
+ac_add_options --with-android-sdk="$ANDROID_SDK"

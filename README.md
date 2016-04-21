@@ -9,5 +9,5 @@
   4. Once installed, exit the Android SDK Manager and run `android avd` to create an Android Virtual Device
   5. Create an AVD with [these settings](./assets/images/avd.png) (feel free to tinker with the settings as per your liking)
   6. Test the AVD by clicking `Start...` (you might see an error about missing graphic libs, resort to Google for a remedy)
-4. Run [./setup.sh](./setup.sh) to set up symlinks/shortcuts for the `android`, `emulator` and `adb` commands
+4. Run [./setup.sh](./setup.sh) which will set up symlinks/shortcuts for the `android`, `emulator` and `adb` commands
 
