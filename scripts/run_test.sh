@@ -1,20 +1,20 @@
 #!/bin/sh
 
-SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 PACKAGE_NAME="org.mozilla.fennec"
 
-$SCRIPT_DIR/install_browser.sh
+sleep 10
 
 # Launch Firefox
 adb shell "am start $PACKAGE_NAME"
 
-# TODO: upload test file to the device (adb push)
+sleep 5
+
+# TODO: run a test script
 # ...
 
-# TODO: run tests
-# ...
-
-sleep 5 # TODO: remove this, here just for demo
+sleep 5
 
 # Close Firefox
 adb shell "am force-stop $PACKAGE_NAME"
+
+sleep 10
