@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 
-# For  768x1280, S4 is 1080x1920
-# => 1.40625x1.5
-# Twitter
+# For 1080x1920. Not tested in practice
 
 input tap 281 150 # 281 150
 sleep 5
