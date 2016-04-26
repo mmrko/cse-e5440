@@ -1,12 +1,26 @@
 #!/bin/sh
 #Weather
 
-#input tap 281 150 # 281 150
-#sleep 5
-#input text "https://weather.com"
-#sleep 5
-#input keyevent KEYCODE_ENTER
-#sleep 5
-#input tap 1055 300 #Menu? 1055 300
-#sleep 5
-#input tap 140 1200
+#540 x 960
+input tap 200 100 # Do not change this
+input text "https://weather.com"
+input keyevent 66
+sleep 15
+input touchscreen swipe 200 700 200 300 # Replace with better swipe-down command
+sleep 5
+input touchscreen swipe 200 300 200 700 # Replace with better swipe-up command
+sleep 5
+input tap 455 200 #Search
+input text "otaniemi"
+input keyevent 66
+sleep 15
+input touchscreen swipe 200 700 200 300 # Replace with better swipe-down command
+sleep 5
+input touchscreen swipe 200 300 200 700 # Replace with better swipe-up command
+sleep 5
+input tap 180 260 # Hourly..
+sleep 5
+input touchscreen swipe 200 700 200 300 # Replace with better swipe-down command
+sleep 5
+input touchscreen swipe 200 300 200 700 # Replace with better swipe-up command
+sleep 5
