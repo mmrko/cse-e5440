@@ -1,0 +1,32 @@
+phone setup:
+-cyanogenmod nightly build 5.1.1
+-airplane mode no sim with wifi using aalto open
+-sleep mode 30 min
+-maximum brigthness
+-disable/switch off:
+ sounds
+ vibrations
+ animations
+ no google services
+ samsung apps
+ notifications
+ clock
+ battery status
+ widgets
+ button ilumination
+ backlight 
+ usb charging 
+
+
+firefox setup default:
+-delete data on exit
+-enabled:
+cookies
+-disabled:
+do not track
+full screen browsing
+auto-updates
+autoplay
+remote debugging
+restore tabs
+
