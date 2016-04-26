@@ -25,12 +25,12 @@ else
 fi
 
 case "$ENVIRONMENT" in
- emulator) ARCHITECTURE="i38    6" ;;
+ emulator) ARCHITECTURE="i386" ;;
  *) ARCHITECTURE="arm" ;;
 esac
 
-PACKAGE_NAME="org.mozilla.fennec"
-BROWSER_VERSION="48.0a1"
+PACKAGE_NAME="org.mozilla.firefox"
+BROWSER_VERSION="45.0.2"
 APK_FILE="fennec-$BROWSER_VERSION.multi.android-$ARCHITECTURE.apk"
 
 echo "Uninstalling existing Firefox build (if any)..."
