@@ -1,6 +1,8 @@
 #!/bin/sh
 
+SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 ENVIRONMENT=${ENVIRONMENT:-emulator}
+ROOT_DIR="$(dirname $SCRIPT_DIR)"
 
 # Check that emulator/device is connected
 if [[ $ENVIRONMENT == "emulator" ]];then
@@ -37,4 +39,4 @@ echo "Uninstalling existing Firefox build (if any)..."
 adb uninstall "$PACKAGE_NAME" >/dev/null 2>&1
 
 echo "Installing $APK_FILE..."
-adb install "builds/$APK_FILE"
+adb install "$ROOT_DIR/builds/$APK_FILE"
