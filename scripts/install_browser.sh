@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ENVIRONMENT=${ENVIRONMENT:-emulator}
+ENVIRONMENT=${ENVIRONMENT:-device}
 
 # Check that emulator/device is connected
 if [[ $ENVIRONMENT == "emulator" ]];then
