@@ -1,20 +1,22 @@
 #!/bin/sh
 
-PACKAGE_NAME="org.mozilla.fennec"
+PACKAGE_NAME="org.mozilla.firefox"
+TEST=$1
+BASE_TIME=5
 
-sleep 10
+sleep $BASE_TIME
 
 # Launch Firefox
 adb shell "am start $PACKAGE_NAME"
 
-sleep 5
+sleep $(($BASE_TIME * 2))
 
-# TODO: run a test script
-# ...
+# Run a test
+adb shell "sh /sdcard/cse-e5440/tests/$TEST"
 
-sleep 5
+sleep $(($BASE_TIME * 2))
 
 # Close Firefox
 adb shell "am force-stop $PACKAGE_NAME"
 
-sleep 10
+sleep $BASE_TIME
