@@ -1,7 +1,7 @@
 #!/bin/sh
 
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
-ENVIRONMENT=${ENVIRONMENT:-device}
+ENVIRONMENT=${ENVIRONMENT:-emulator}
 ROOT_DIR="$(dirname $SCRIPT_DIR)"
 
 # Check that emulator/device is connected

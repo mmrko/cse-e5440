@@ -3,7 +3,7 @@
 PACKAGE_NAME="org.mozilla.firefox"
 TEST=$1
 BASE_TIME=5
-ENVIRONMENT=${ENVIRONMENT:-device}
+ENVIRONMENT=${ENVIRONMENT:-emulator}
 
 xM=0;x0=0;yM=0;yO=0
 
@@ -16,6 +16,10 @@ if [[ $ENVIRONMENT == "device" ]];then
   yM=1.5
   yO=0
 fi
+
+settings put system screen_off_timeout 1800000
+settings put system screen_brightness 255
+settings put system screen_auto_brightness 0
 
 sleep $BASE_TIME
 
