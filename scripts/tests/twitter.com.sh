@@ -1,7 +1,7 @@
 #!/bin/sh
 #Twitter
 
-input tap {{ 200 * xM + xO }} {{ 100 * yM + yO }}
+input tap 200 100
 sleep 5
 input text "https://twitter.com/"
 sleep 5
