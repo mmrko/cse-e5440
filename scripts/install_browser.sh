@@ -25,7 +25,7 @@ else
 fi
 
 case "$ENVIRONMENT" in
- emulator) ARCHITECTURE="i386" ;;
+ emulator) ARCHITECTURE="i38    6" ;;
  *) ARCHITECTURE="arm" ;;
 esac
 
