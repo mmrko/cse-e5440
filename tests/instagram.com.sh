@@ -12,27 +12,36 @@ input tap 300 750 # 70 300
 sleep 2
 
 
-input touchscreen swipe 200 200 200 700 3000 # swipe down
+input touchscreen swipe 200 400 200 700 3000 # swipe down
 sleep 2
 
-input touchscreen swipe 200 200 200 700 3000 # swipe down 
+input touchscreen swipe 200 400 200 700 3000 # swipe down 
 sleep 2
 
-input touchscreen swipe 200 200 200 700 3000 # swipe down
+input touchscreen swipe 200 400 200 700 3000 # swipe down
 sleep 2
 
 
 
 
-input touchscreen swipe 200 700 200 200 3000 #swipe up
+input touchscreen swipe 200 700 200 400 3000 #swipe up
 sleep 2
 
-input touchscreen swipe 200 700 200 200 3000 # swipe up
+input touchscreen swipe 200 700 200 400 3000 # swipe up
 sleep 2
 
-input touchscreen swipe 200 700 200 200 3000 # swipe up
+input touchscreen swipe 200 700 200 400 3000 # swipe up
 sleep 2
 
-input tap 200 300
+input tap 200 300 #tap search button
 sleep 2
 
+input tap 500 440 #tap search textfield
+sleep 2
+input text "instagram"
+sleep 2
+input tap 400 680 #tap found 
+sleep 2
+
+input touchscreen swipe 200 400 200 600 4000 # swipe up
+sleep 2
