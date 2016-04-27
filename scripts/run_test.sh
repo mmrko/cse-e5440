@@ -6,13 +6,14 @@ fi
 
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 ROOT_DIR="$(dirname $SCRIPT_DIR)"
-BASE_TIME=${BASE_TIME:-5}
+BASE_WAIT_TIME=${BASE_WAIT_TIME:-5}
+BASE_NAVIGATION_WAIT_TIME=${BASE_NAVIGATION_WAIT_TIME:-10}
 ENVIRONMENT=${ENVIRONMENT:-emulator}
 TESTS=$1
 TESTS=${TESTS:-$(ls $ROOT_DIR/tests)}
 PACKAGE_NAME="org.mozilla.firefox"
 
-xM=0;xO=0;yM=0;yO=0
+xM=1;xO=0;yM=1;yO=0
 
 # Check that emulator/device is connected
 ENVIRONMENT=$ENVIRONMENT $SCRIPT_DIR/check_connection.sh || exit 1
@@ -27,36 +28,52 @@ if [[ $ENVIRONMENT == "device" ]];then
   yO=0
 fi
 
-echo "Setting screen brightness.."
+ADB_ENV="xM=$xM xO=$xO yM=$yM yO=$yO BASE_WAIT_TIME=$BASE_WAIT_TIME"
+
+function navigate_to () {
+  adb shell "$ADB_ENV input tap $(( 500 * $xM + $xO )) $(( 150 * $yM + $yO ))" >/dev/null
+  adb shell "$ADB_ENV input text https://$site" >/dev/null
+  adb shell "$ADB_ENV input keyevent KEYCODE_ENTER" >/dev/null
+  adb shell "sleep $BASE_NAVIGATION_WAIT_TIME" >/dev/null
+}
+
+echo "\nSetting screen brightness.."
 adb shell "settings put system screen_off_timeout 1800000" >/dev/null
 adb shell "settings put system screen_brightness 255" >/dev/null
 adb shell "settings put system screen_auto_brightness 0" >/dev/null
 
-echo "Uploading test scripts..."
+echo "\nUploading test scripts..."
 $ROOT_DIR/scripts/upload_test_scripts.sh
 
-echo "Sleeping for $BASE_TIME s..."
-sleep $BASE_TIME
+echo "\nSleeping for $BASE_WAIT_TIME s..."
+sleep $BASE_WAIT_TIME
 
-echo "Launching Firefox..."
+echo "\nLaunching Firefox..."
 adb shell "am start $PACKAGE_NAME" >/dev/null
 
-echo "Sleeping for $((BASE_TIME * 2))s..."
-sleep $(($BASE_TIME * 2))
+echo "\nSleeping for $((BASE_WAIT_TIME * 2))s..."
+sleep $(($BASE_WAIT_TIME * 2))
 
-echo "Running test(s)..."
+echo "\nRunning test(s)...\n"
 
 for test in $TESTS; do
   site=${test/.sh/}
   echo "Browsing $site..."
-  adb shell "xM=$xM xO=$xO yM=$yM yO=$yO BASE_TIME=$BASE_TIME sh /sdcard/cse-e5440/tests/$site.sh" >/dev/null
+
+  navigate_to $site
+
+  adb shell "$ADB_ENV sh /sdcard/cse-e5440/tests/$site.sh" >/dev/null
 done
 
-echo "Sleeping for $(($BASE_TIME * 2))s..."
-sleep $(($BASE_TIME * 2))
+echo "\nDone browsing."
 
-echo "Closing Firefox..."
+echo "\nSleeping for $(($BASE_WAIT_TIME * 2))s..."
+sleep $(($BASE_WAIT_TIME * 2))
+
+echo "\nClosing Firefox..."
 adb shell "am force-stop $PACKAGE_NAME" >/dev/null
 
-echo "Sleeping for $(($BASE_TIME * 2))s..."
-sleep $BASE_TIME
+echo "\nSleeping for $(($BASE_WAIT_TIME))s..."
+sleep $BASE_WAIT_TIME
+
+echo "\nDone!"
