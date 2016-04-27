@@ -10,14 +10,6 @@ TESTS=$1
 TESTS=${TESTS:-$(ls $ROOT_DIR/tests/*.sh)}
 
 source "$SCRIPT_DIR/vars"
-
-if [[ $ENVIRONMENT == "device" ]];then
-  xM=1.40625
-  xO=0
-  yM=1.5
-  yO=0
-fi
-
 export $(cut -d= -f1 "$SCRIPT_DIR/vars")
 
 # Check that emulator/device is connected
@@ -38,7 +30,7 @@ echo "\nSleeping for $BASE_WAIT_TIME s..."
 sleep $BASE_WAIT_TIME
 
 echo "\nLaunching Firefox..."
-adb shell "am start $PACKAGE_NAME" >/dev/null
+adb shell "am start $PACKAGE_NAME"
 
 echo "\nSleeping for $((BASE_WAIT_TIME * 2))s..."
 sleep $(($BASE_WAIT_TIME * 2))
@@ -51,7 +43,15 @@ for test in $TESTS; do
 
   $SCRIPT_DIR/navigate_to.sh "https://$site"
 
-  adb shell "sh $DEST_DIR/tests/$site.sh" >/dev/null
+  btwt=$BASE_TAP_WAIT_TIME
+  bswt=$BASE_SWIPE_WAIT_TIME
+  bsnwt=$BASE_SUBPAGE_NAVIGATION_WAIT_TIME
+  adb shell "
+    BASE_TAP_WAIT_TIME=$btwt \
+    BASE_SWIPE_WAIT_TIME=$bswt \
+    BASE_SUBPAGE_NAVIGATION_WAIT_TIME=$bsnwt \
+    sh $DEST_DIR/tests/$site.sh
+  "
 done
 
 echo "\nDone browsing."
