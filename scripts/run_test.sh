@@ -7,14 +7,11 @@ fi
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 ROOT_DIR="$(dirname $SCRIPT_DIR)"
 TESTS=$1
-TESTS=${TESTS:-$(ls $ROOT_DIR/tests)}
+TESTS=${TESTS:-$(ls $ROOT_DIR/tests/*.sh)}
 
 source "$SCRIPT_DIR/vars"
 
 if [[ $ENVIRONMENT == "device" ]];then
-  # Emulator: 768x1280
-  # S4: 1080x1920
-  # => 1.40625x1.5
   xM=1.40625
   xO=0
   yM=1.5
@@ -25,6 +22,9 @@ export $(cut -d= -f1 "$SCRIPT_DIR/vars")
 
 # Check that emulator/device is connected
 ENVIRONMENT=$ENVIRONMENT $SCRIPT_DIR/check_connection.sh || exit 1
+
+echo "\nClosing any open Firefox..."
+adb shell "am force-stop $PACKAGE_NAME" >/dev/null
 
 echo "\nSetting screen brightness.."
 adb shell "settings put system screen_off_timeout 1800000" >/dev/null
