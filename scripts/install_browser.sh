@@ -1,30 +1,11 @@
 #!/bin/sh
 
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
-ENVIRONMENT=${ENVIRONMENT:-emulator}
 ROOT_DIR="$(dirname $SCRIPT_DIR)"
+ENVIRONMENT=${ENVIRONMENT:-emulator}
 
 # Check that emulator/device is connected
-if [[ $ENVIRONMENT == "emulator" ]];then
-
-  if $(adb emu >/dev/null 2>&1); then
-    echo "Running $ENVIRONMENT detected: OK"
-  else
-    echo "Please start an emulator first and run $0 again: ./scripts/emulator.sh @s4"
-    exit 1
-  fi
-
-else
-
-  device_connected=`adb devices | sed -n /device$/p`
-  if [[ -z $device_connected ]]; then
-    echo "Device not connected! Please check your USB connection."
-    exit 1
-  else
-    echo "Running $ENVIRONMENT detected: OK"
-  fi
-
-fi
+ENVIRONMENT=$ENVIRONMENT $SCRIPT_DIR/check_connection.sh || exit 1
 
 case "$ENVIRONMENT" in
  emulator) ARCHITECTURE="i386" ;;
