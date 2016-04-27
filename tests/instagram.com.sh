@@ -15,7 +15,7 @@ sleep 2
 input touchscreen swipe 200 400 200 700 3000 # swipe down
 sleep 2
 
-input touchscreen swipe 200 400 200 700 3000 # swipe down 
+input touchscreen swipe 200 400 200 700 3000 # swipe down
 sleep 2
 
 input touchscreen swipe 200 400 200 700 3000 # swipe down
@@ -40,7 +40,7 @@ input tap 500 440 #tap search textfield
 sleep 2
 input text "instagram"
 sleep 2
-input tap 400 680 #tap found 
+input tap 400 680 #tap found
 sleep 2
 
 input touchscreen swipe 200 400 200 600 4000 # swipe up

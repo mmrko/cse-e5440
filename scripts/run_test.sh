@@ -6,17 +6,10 @@ fi
 
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 ROOT_DIR="$(dirname $SCRIPT_DIR)"
-BASE_WAIT_TIME=${BASE_WAIT_TIME:-5}
-BASE_NAVIGATION_WAIT_TIME=${BASE_NAVIGATION_WAIT_TIME:-10}
-ENVIRONMENT=${ENVIRONMENT:-emulator}
 TESTS=$1
 TESTS=${TESTS:-$(ls $ROOT_DIR/tests)}
-PACKAGE_NAME="org.mozilla.firefox"
 
-xM=1;xO=0;yM=1;yO=0
-
-# Check that emulator/device is connected
-ENVIRONMENT=$ENVIRONMENT $SCRIPT_DIR/check_connection.sh || exit 1
+source "$SCRIPT_DIR/vars"
 
 if [[ $ENVIRONMENT == "device" ]];then
   # Emulator: 768x1280
@@ -28,14 +21,10 @@ if [[ $ENVIRONMENT == "device" ]];then
   yO=0
 fi
 
-ADB_ENV="xM=$xM xO=$xO yM=$yM yO=$yO BASE_WAIT_TIME=$BASE_WAIT_TIME"
+export $(cut -d= -f1 "$SCRIPT_DIR/vars")
 
-function navigate_to () {
-  adb shell "$ADB_ENV input tap $(( 500 * $xM + $xO )) $(( 150 * $yM + $yO ))" >/dev/null
-  adb shell "$ADB_ENV input text https://$site" >/dev/null
-  adb shell "$ADB_ENV input keyevent KEYCODE_ENTER" >/dev/null
-  adb shell "sleep $BASE_NAVIGATION_WAIT_TIME" >/dev/null
-}
+# Check that emulator/device is connected
+ENVIRONMENT=$ENVIRONMENT $SCRIPT_DIR/check_connection.sh || exit 1
 
 echo "\nSetting screen brightness.."
 adb shell "settings put system screen_off_timeout 1800000" >/dev/null
@@ -60,9 +49,9 @@ for test in $TESTS; do
   site=${test/.sh/}
   echo "Browsing $site..."
 
-  navigate_to $site
+  $SCRIPT_DIR/navigate_to.sh "https://$site"
 
-  adb shell "$ADB_ENV sh /sdcard/cse-e5440/tests/$site.sh" >/dev/null
+  adb shell "sh $DEST_DIR/tests/$site.sh" >/dev/null
 done
 
 echo "\nDone browsing."

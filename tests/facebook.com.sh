@@ -1,11 +1,6 @@
 #!/bin/sh
 #Facebook
-input tap 200 50
-sleep 5
-input text "https://fb.com"
-sleep 5
-input keyevent KEYCODE_ENTER 
-sleep 5
+
 input tap 400 400 # usr textbox
 sleep 2
 input text "zoo.lutrie@gmx.de" #usr

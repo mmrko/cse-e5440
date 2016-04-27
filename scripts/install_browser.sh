@@ -2,7 +2,8 @@
 
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 ROOT_DIR="$(dirname $SCRIPT_DIR)"
-ENVIRONMENT=${ENVIRONMENT:-emulator}
+
+source "$SCRIPT_DIR/vars"
 
 # Check that emulator/device is connected
 ENVIRONMENT=$ENVIRONMENT $SCRIPT_DIR/check_connection.sh || exit 1
@@ -12,8 +13,6 @@ case "$ENVIRONMENT" in
  *) ARCHITECTURE="arm" ;;
 esac
 
-PACKAGE_NAME="org.mozilla.firefox"
-BROWSER_VERSION="45.0.2"
 APK_FILE="fennec-$BROWSER_VERSION.multi.android-$ARCHITECTURE.apk"
 
 echo "Uninstalling existing Firefox build (if any)..."
