@@ -27,11 +27,11 @@ sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
 
 swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params_2 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_2 && sleep $BASE_SWIPE_WAIT_TIME
 navigate_to "$base_url/lucastriefenbach"
 sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
 
+swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params_2 && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params_2 && sleep $BASE_SWIPE_WAIT_TIME
 navigate_to "$base_url/lucastriefenbach/friends"
