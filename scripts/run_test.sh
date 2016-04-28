@@ -8,7 +8,6 @@ SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 ROOT_DIR="$(dirname $SCRIPT_DIR)"
 TESTS=$1
 TESTS=${TESTS:-"weather.com flickr.com yahoo.com twitter.com facebook.com instagram.com"}
-
 source "$SCRIPT_DIR/vars"
 
 # Check that emulator/device is connected
