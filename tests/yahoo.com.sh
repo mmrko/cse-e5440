@@ -16,6 +16,7 @@ navigate_to "$base_url/tech"
 sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 
 navigate_to "$base_url/news"
 sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
