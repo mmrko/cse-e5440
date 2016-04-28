@@ -13,30 +13,30 @@ source "$SCRIPT_DIR/vars"
 # Check that emulator/device is connected
 $SCRIPT_DIR/check_connection.sh || exit 1
 
-echo "\nClosing any open Firefox..."
+echo -e "\nClosing any open Firefox..."
 adb shell "am force-stop $PACKAGE_NAME" >/dev/null
 
-echo "\nSetting screen brightness.."
+echo -e "\nSetting screen brightness.."
 adb shell "settings put system screen_off_timeout 1800000" >/dev/null
 adb shell "settings put system screen_brightness 255" >/dev/null
 adb shell "settings put system screen_auto_brightness 0" >/dev/null
 
-echo "\nUploading test scripts..."
+echo -e "\nUploading test scripts..."
 $ROOT_DIR/scripts/upload_test_scripts.sh
 
-echo "\nSleeping for ${BASE_WAIT_TIME}s..."
+echo -e "\nSleeping for ${BASE_WAIT_TIME}s..."
 sleep $BASE_WAIT_TIME
 
-echo "\nLaunching Firefox..."
+echo -e "\nLaunching Firefox..."
 adb shell "am start $PACKAGE_NAME"
 
-echo "\nSleeping for $((BASE_WAIT_TIME * 3))s..."
+echo -e "\nSleeping for $((BASE_WAIT_TIME * 3))s..."
 sleep $(($BASE_WAIT_TIME * 3))
 
-echo "\nRunning test(s)...\n"
+echo -e "\nRunning test(s)...\n"
 
 for site in $TESTS; do
-  echo "Browsing $site..."
+  echo -e "Browsing $site..."
 
   BASE_NAVIGATION_WAIT_TIME=$BASE_NAVIGATION_WAIT_TIME $SCRIPT_DIR/navigate_to.sh "https://$site"
 
@@ -54,15 +54,15 @@ for site in $TESTS; do
   echo "Done browsing $site."
 done
 
-echo "\nDone browsing."
+echo -e "\nDone browsing."
 
-echo "\nSleeping for $(($BASE_WAIT_TIME * 3))s..."
+echo -e "\nSleeping for $(($BASE_WAIT_TIME * 3))s..."
 sleep $(($BASE_WAIT_TIME * 3))
 
 if [[ CLOSE_BROWSER_ON_COMPLETE == 1 ]]; then
-  echo "\nClosing Firefox..."
+  echo -e "\nClosing Firefox..."
   adb shell "am force-stop $PACKAGE_NAME" >/dev/null
 
-  echo "\nSleeping for $(($BASE_WAIT_TIME))s..."
+  echo -e "\nSleeping for $(($BASE_WAIT_TIME))s..."
   sleep $BASE_WAIT_TIME
 fi
