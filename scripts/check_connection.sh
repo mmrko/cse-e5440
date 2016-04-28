@@ -1,5 +1,8 @@
 #!/bin/sh
 
+SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+source "$SCRIPT_DIR/vars"
+
 if [[ $ENVIRONMENT == "emulator" ]];then
 
   if $(adb emu >/dev/null 2>&1); then
