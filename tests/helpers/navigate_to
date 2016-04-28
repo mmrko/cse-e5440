@@ -1,0 +1,8 @@
+#!/bin/sh
+
+address="$1"
+address={address:-"about:blank"}
+
+input tap 500 150
+input text $1
+input keyevent KEYCODE_ENTER
