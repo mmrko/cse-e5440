@@ -1,28 +1,28 @@
 #!/bin/sh
-#Yahoo
+# Yahoo
 
-navigate_to "https://www.yahoo.com/"
-$((BASE_TAP_WAIT_TIME * 3))
+alias tap="input tap"
+alias swipe="input touchscreen swipe"
+alias navigate_to="sh ./helpers/navigate_to"
 
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
+swipe_params="450 1050 250 250 150"
+base_url="https://yahoo.com"
 
-navigate_to "http://sports.yahoo.com/"
-$((BASE_TAP_WAIT_TIME * 3))
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 
-navigate_to "http://sports.yahoo.com/news"
-$((BASE_TAP_WAIT_TIME * 3))
+navigate_to "$base_url/tech"
+sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
+navigate_to "$base_url/news"
+sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 
-navigate_to "http://sports.yahoo.com/soccer/premier-league/"
-$((BASE_TAP_WAIT_TIME * 3))
+navigate_to "$base_url/style"
+sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
