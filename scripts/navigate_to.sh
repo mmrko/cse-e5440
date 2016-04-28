@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 BASE_NAVIGATION_WAIT_TIME=${BASE_NAVIGATION_WAIT_TIME:-1}
