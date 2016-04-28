@@ -1,43 +1,27 @@
 #!/bin/sh
-#Twitter
+# Twitter
 
-navigate_to "https://twitter.com/"
-$((BASE_TAP_WAIT_TIME * 3))
+alias tap="input tap"
+alias swipe="input touchscreen swipe"
+alias navigate_to="sh ./helpers/navigate_to"
 
-navigate_to "https://mobile.twitter.com/search"
-$((BASE_TAP_WAIT_TIME * 3))
+swipe_params="450 1050 250 250 150"
+base_url="https://twitter.com"
 
-navigate_to https://mobile.twitter.com/search?q=obama
-$((BASE_TAP_WAIT_TIME * 3))
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
+navigate_to "$base_url/search"
+sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 
+navigate_to "$base_url/search?q=obama"
+sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 
-navigate_to https://mobile.twitter.com/search?q=aalto
-$((BASE_TAP_WAIT_TIME * 3))
-
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-
-navigate_to https://about.twitter.com/
-$((BASE_TAP_WAIT_TIME * 3))
-
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params_1 && sleep $BASE_SWIPE_WAIT_TIME
-
-
+navigate_to "$base_url/search?q=aalto"
+sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 
 

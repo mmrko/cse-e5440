@@ -6,7 +6,8 @@ fi
 
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 ROOT_DIR="$(dirname $SCRIPT_DIR)"
-TESTS="weather.com flickr.com facebook.com instagram.com yahoo.com twitter.com"
+TESTS=$1
+TESTS=${TESTS:-"weather.com flickr.com facebook.com instagram.com yahoo.com twitter.com"}
 
 source "$SCRIPT_DIR/vars"
 
