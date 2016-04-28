@@ -7,7 +7,7 @@ fi
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 ROOT_DIR="$(dirname $SCRIPT_DIR)"
 TESTS=$1
-TESTS=${TESTS:-"weather.com flickr.com facebook.com instagram.com yahoo.com twitter.com"}
+TESTS=${TESTS:-"weather.com flickr.com yahoo.com twitter.com facebook.com instagram.com"}
 
 source "$SCRIPT_DIR/vars"
 
@@ -39,11 +39,17 @@ echo -e "\nRunning test(s)...\n"
 for site in $TESTS; do
   echo -e "Browsing $site..."
 
-  BASE_NAVIGATION_WAIT_TIME=$BASE_NAVIGATION_WAIT_TIME $SCRIPT_DIR/navigate_to.sh "https://$site"
-
+  bnwt=$BASE_NAVIGATION_WAIT_TIME
   btwt=$BASE_TAP_WAIT_TIME
   bswt=$BASE_SWIPE_WAIT_TIME
   bsnwt=$BASE_SUBPAGE_NAVIGATION_WAIT_TIME
+
+  if [[ $site == "weather.com" ]]; then
+    bnwt=$((bnwt * 2))
+  fi
+
+  BASE_NAVIGATION_WAIT_TIME=$bnwt $SCRIPT_DIR/navigate_to.sh "https://$site"
+
   adb shell "
     cd $DEST_DIR/tests && \
     BASE_TAP_WAIT_TIME=$btwt \

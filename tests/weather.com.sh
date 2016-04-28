@@ -1,6 +1,9 @@
 #!/bin/sh
 # weather.com
 
+BASE_SWIPE_WAIT_TIME=$((BASE_SWIPE_WAIT_TIME * 2))
+BASE_SUBPAGE_NAVIGATION_WAIT_TIME=$((BASE_SUBPAGE_NAVIGATION_WAIT_TIME * 2))
+
 alias tap="input tap"
 alias swipe="input touchscreen swipe"
 alias navigate_to="sh ./helpers/navigate_to"

@@ -18,10 +18,10 @@ navigate_to "$base_url/search?q=obama"
 sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 
 navigate_to "$base_url/search?q=aalto"
 sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
-
-
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
