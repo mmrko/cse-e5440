@@ -6,8 +6,7 @@ fi
 
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 ROOT_DIR="$(dirname $SCRIPT_DIR)"
-TESTS=$1
-TESTS=${TESTS:-$(ls $ROOT_DIR/tests/*.sh)}
+TESTS="weather.com flickr.com facebook.com instagram.com yahoo.com twitter.com"
 
 source "$SCRIPT_DIR/vars"
 
@@ -36,8 +35,7 @@ sleep $(($BASE_WAIT_TIME * 3))
 
 echo "\nRunning test(s)...\n"
 
-for test in $TESTS; do
-  site=${test/.sh/}
+for site in $TESTS; do
   echo "Browsing $site..."
 
   BASE_NAVIGATION_WAIT_TIME=$BASE_NAVIGATION_WAIT_TIME $SCRIPT_DIR/navigate_to.sh "https://$site"
@@ -53,7 +51,7 @@ for test in $TESTS; do
     sh $site.sh
   "
   $SCRIPT_DIR/navigate_to.sh "about:blank"
-  say "Done browsing $site."
+  echo "Done browsing $site."
 done
 
 echo "\nDone browsing."
