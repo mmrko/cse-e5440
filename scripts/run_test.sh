@@ -7,7 +7,7 @@ fi
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 ROOT_DIR="$(dirname $SCRIPT_DIR)"
 TESTS=$1
-TESTS=${TESTS:-"weather.com flickr.com yahoo.com twitter.com facebook.com instagram.com"}
+TESTS=${TESTS:-"flickr.com yahoo.com instagram.com"}
 source "$SCRIPT_DIR/vars"
 
 # Check that emulator/device is connected
@@ -58,6 +58,8 @@ for site in $TESTS; do
   "
   $SCRIPT_DIR/navigate_to.sh "about:blank"
   echo "Done browsing $site."
+  echo "Sleep for $(($BASE_WAIT_TIME * 2))s..."
+  sleep $(($BASE_WAIT_TIME * 2))
 done
 
 echo -e "\nDone browsing."
