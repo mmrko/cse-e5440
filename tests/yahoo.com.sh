@@ -28,14 +28,7 @@ swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 
-navigate_to "$base_url/style"
-sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
-swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
-swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
-
-navigate_to "$base_url/sports"
+navigate_to "$base_url/business"
 sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
