@@ -13,15 +13,34 @@ sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 
-navigate_to "$base_url/photos/tags"
+navigate_to "$base_url/photos/tags/primavera"
+sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+
+navigate_to "$base_url/photos/tags/amazing"
 sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 
-navigate_to "$base_url/photos/tags"
+navigate_to "$base_url/photos/tags/rural"
 sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+
+navigate_to "$base_url/photos/tags/brazil"
+sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
