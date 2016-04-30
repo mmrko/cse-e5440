@@ -32,9 +32,6 @@ sleep $BASE_WAIT_TIME
 echo -e "\nLaunching Firefox..."
 adb shell "am start $PACKAGE_NAME"
 
-echo -e "\nSleeping for $((BASE_WAIT_TIME * 3))s..."
-sleep $(($BASE_WAIT_TIME * 3))
-
 echo -e "\nRunning test(s) $TIMES times...\n"
 
 for iteration in $(seq 1 $TIMES); do
@@ -42,6 +39,10 @@ for iteration in $(seq 1 $TIMES); do
   echo -e "\nITERATION: $iteration"
 
   for site in $TESTS; do
+
+    echo "Sleep for ${BASE_NAVIGATION_WAIT_TIME}s..."
+    sleep $BASE_NAVIGATION_WAIT_TIME
+
     echo -e "Browsing $site..."
 
     bnwt=$BASE_NAVIGATION_WAIT_TIME
@@ -64,16 +65,14 @@ for iteration in $(seq 1 $TIMES); do
     "
     $SCRIPT_DIR/navigate_to.sh "about:blank"
     echo "Done browsing $site."
-    echo "Sleep for $(($BASE_WAIT_TIME * 2))s..."
-    sleep $(($BASE_WAIT_TIME * 2))
   done
 
 done
 
 echo -e "\nDone browsing."
 
-echo -e "\nSleeping for $(($BASE_WAIT_TIME * 3))s..."
-sleep $(($BASE_WAIT_TIME * 3))
+echo "Sleep for ${BASE_NAVIGATION_WAIT_TIME}s..."
+sleep $BASE_NAVIGATION_WAIT_TIME
 
 if [[ CLOSE_BROWSER_ON_COMPLETE == 1 ]]; then
   echo -e "\nClosing Firefox..."
