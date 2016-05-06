@@ -3,8 +3,6 @@
 address="$1"
 address={address:-"about:blank"}
 
-input touchscreen swipe 250 250 250 1150 50 && sleep 1
-input touchscreen swipe 250 250 250 1150 50 && sleep 1
 input tap 500 150
 input text $1
 input keyevent KEYCODE_ENTER
