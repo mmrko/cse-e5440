@@ -48,3 +48,11 @@ swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 tap 450 1550 && sleep $BASE_TAP_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
 swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+
+
+navigate_to "$base_url/ufc/"
+sleep $BASE_SUBPAGE_NAVIGATION_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+tap 450 1550 && sleep $BASE_TAP_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
+swipe $swipe_params && sleep $BASE_SWIPE_WAIT_TIME
