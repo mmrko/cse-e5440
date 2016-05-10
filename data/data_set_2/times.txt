@@ -1,0 +1,5 @@
+flickr: 204s
+instagram: 228s
+yahoo: 172s
+
+
