@@ -10,6 +10,7 @@ TESTS=$1
 TESTS=${TESTS:-"flickr.com yahoo.com instagram.com"}
 TIMES=$2
 TIMES=${TIMES:-1}
+
 source "$SCRIPT_DIR/vars"
 
 # Check that emulator/device is connected
@@ -66,6 +67,9 @@ for iteration in $(seq 1 $TIMES); do
     $SCRIPT_DIR/navigate_to.sh "about:blank"
     echo "Done browsing $site."
   done
+ 
+  echo "Sleep for ${BASE_ITERATION_WAIT_TIME}s..."
+  sleep $BASE_ITERATION_WAIT_TIME
 
 done
 
