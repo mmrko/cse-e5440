@@ -33,7 +33,7 @@ mozilla-central
 tmp
 *.iml
 
-data/*.csv
+data/**/*.csv
 Rplots.pdf
 ###R###
 

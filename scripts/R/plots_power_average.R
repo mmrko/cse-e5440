@@ -3,7 +3,7 @@
 library(ggplot2)
 library(Thermimage)
 
-orig_df <- read.csv('./data/http1_run3_power_over_time.csv')
+orig_df <- read.csv('./data/part_1/http1_run3_power_over_time.csv')
 
 names(orig_df) <- c('Time', 'Power')
 
