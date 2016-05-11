@@ -179,7 +179,7 @@ As seen in Table \ref{table:latency} Yahoo exhibited higher latency and signific
 
 Figure \ref{fig:smoothed_power} shows that the energy consumption difference between the two protocols is minimal. Three runs for both of the protocol is not however enough to draw conclusions. The bump in the average power level for \url{yahoo.com} (also seen in the two power spikes in Figure \ref{fig:average_power}) can be attributed to \emph{layout trashing} observed when swiping down \url{https://yahoo.com/style} on mobile. Unfortunately, this was beyond the control of the authors, so it was later decided that \emph{/style} would be omitted from the subpages to navigate to in any future experiments. One of the HTTP1.1 runs did not seem to spike up in this manner, though, when browsing \url{yahoo.com}. This only goes to tell how important it would be to have had more test runs executed (to minimize the effect of anomalies).
 
-Some interesting observations can be made from the graph in Figure \ref{fig:average_power}. First, it can be seen that the base power of the phone is around 1W. Launching and running Firefox increases the base power level to the vincinity of 1.8W (at 12-24 seconds). Labels \emph{A}  and \emph{B} represent the power levels when browsing \url{instagram.com} (at 24-120 seconds). The reason why the power level suddenly drops well below 2W twice (\emph{B}) was due to the fact that the page visited (\url{https://flickr.com/photos/tags}) was light on content, and was actually navigated to twice, consecutively. As the URL would not change when navigated to the second time, Firefox was smart enough to not load the page preserving energy in the process. The fact that this subpage was visited twice in a row was an implementation bug missed by the authors when conducting the tests.
+Some interesting observations can be made from the graph in Figure \ref{fig:average_power}. First, it can be seen that the base power of the phone is around 1.20W. Launching and running Firefox increases the base power level to the vincinity of 1.65W (at 12-24 seconds). Labels \emph{A}  and \emph{B} represent the power levels when browsing \url{instagram.com} (at 24-120 seconds). The reason why the power level suddenly drops well below 2W twice (\emph{B}) was due to the fact that the page visited (\url{https://flickr.com/photos/tags}) was light on content, and was actually navigated to twice, consecutively. As the URL would not change when navigated to the second time, Firefox was smart enough to not load the page preserving energy in the process. The fact that this subpage was visited twice in a row was an implementation bug missed by the authors when conducting the tests.
 
 Label \emph{C} and \emph{D} represent the power levels when browsing \url{flickr.com} (at 135-250 seconds). The spikes (\emph{D}) were due to layout trashing as referred to earlier. Last, label \emph{E} represents the browsing of \url{instagram.com} (at 260-395 seconds). Judging by the graph, it seems as if Instagram would be the most energy inefficient. However, as the order of target websites in the corpus was not randomized, such conclusions can not be drawn. It might very well be that the progressive increase in the power level is due to increasing device temperature, or Firefox's excess allocation of memory and/or processes over time.
 
@@ -224,11 +224,17 @@ In addition to evaluation of potential power saving mechanisms, a few items are 
 
 \subsection{Results}
 
+% Latencies (avg. & std.dev)
 
+    % Aalto open (w/o VPN)
+    % instagram.com     112.747         4.708
+    % yahoo.com         133.282         8.004
+    % flickr.com        131.587         6.611
 
-% instagram.com round-trip min/avg/max/stddev = 110.291/112.747/258.655/4.708 ms
-% yahoo.com     round-trip min/avg/max/stddev = 128.055/133.282/216.264/8.004 ms
-% flickr.com    round-trip min/avg/max/stddev = 126.995/131.587/258.968/6.611 ms
+    % Aalto closed (w/ VPN)
+    % instagram.com     295.559         56.325
+    % yahoo.com         303.997         77.832
+    % flickr.com        306.019         50.457
 
 \begin{table}[h!]
 
