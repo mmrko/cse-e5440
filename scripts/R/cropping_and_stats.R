@@ -14,10 +14,11 @@ subdir=args[1]
 name=args[2]
 http=strtoi(args[3])
 runs=strtoi(args[4])
+
 min=22
-if(name=='flickr'){max=192} else
- if( name=='yahoo'){max=172} else
-  { max=222	}
+if(name=='flickr'){max=190} else
+ if( name=='yahoo'){max=170} else
+  { max=220	}
 
 average_data=mat.or.vec(max-min,1);
 
@@ -67,7 +68,7 @@ print('Test')
 print(length(data))
 average_data=average_data/runs
 print(length(average_data))
-sink(paste("./data/part_2/power/",subdir,"/http",http,"/",name,"_",http,"_average.csv",sep=""), append=FALSE, split=FALSE)
+sink(paste("./data/part_2/power/",subdir,"/http",http,"/",name,"_average.csv",sep=""), append=FALSE, split=FALSE)
 x=1
 for (i in average_data){
 cat(paste(x,i,sep=','))
