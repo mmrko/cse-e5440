@@ -50,7 +50,7 @@ p<-ggplot()+
 	geom_smooth(data=data[[12]], aes(x=Time, y=Power, colour='http2'))+
 	geom_smooth(data=data[[13]], aes(x=Time, y=Power, colour='http2'))+
 	geom_smooth(data=data[[14]], aes(x=Time, y=Power, colour='http2'))+
-	ignore yahoo
+	#ignore yahoo
 	geom_smooth(data=data[[15]], aes(x=Time, y=Power, colour='http2'))+
 	geom_smooth(data=data[[16]], aes(x=Time, y=Power, colour='http2'))+
 	geom_smooth(data=data[[17]], aes(x=Time, y=Power, colour='http2'))+
@@ -61,15 +61,15 @@ p<-ggplot()+
 	#htpp1
 	geom_smooth(data=data[[1]], aes(x=Time, y=Power, colour="http1"))+
 	geom_smooth(data=data[[2]], aes(x=Time, y=Power, colour='http1'))+
-	ignore on yahoo
+	#ignore on yahoo
 	geom_smooth(data=data[[3]], aes(x=Time, y=Power, colour='http1'))+
 	geom_smooth(data=data[[4]], aes(x=Time, y=Power, colour='http1'))+
 	geom_smooth(data=data[[5]], aes(x=Time, y=Power, colour='http1'))+
-	ignore on instagram
+	#ignore on instagram
 	geom_smooth(data=data[[6]], aes(x=Time, y=Power, colour='http1'))+
 	geom_smooth(data=data[[7]], aes(x=Time, y=Power, colour='http1'))+
 	geom_smooth(data=data[[8]], aes(x=Time, y=Power, colour='http1'))
-	ignore on flickr
+	#ignore on flickr
 	geom_smooth(data=data[[9]], aes(x=Time, y=Power, colour='http1'))
 
 

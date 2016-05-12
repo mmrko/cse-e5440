@@ -67,7 +67,7 @@ print('Test')
 print(length(data))
 average_data=average_data/runs
 print(length(average_data))
-sink(paste("./data/part_2/",subdir,"/http",http,"/",name,"_average.csv",sep=""), append=FALSE, split=FALSE)
+sink(paste("./data/part_2/",subdir,"/http",http,"/",name,"_",http,"_average.csv",sep=""), append=FALSE, split=FALSE)
 x=1
 for (i in average_data){
 cat(paste(x,i,sep=','))
