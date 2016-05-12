@@ -15,9 +15,9 @@ data=list()
 column_names <- c('Time', 'Power')
 
 
-data1=read.csv(paste("./data/part_2/",subdir,"/http1/",name,"_1_average.csv",sep=""))
+data1=read.csv(paste("./data/part_2/power/",subdir,"/http1/",name,"_1_average.csv",sep=""))
 
-data2=read.csv(paste("./data/part_2/",subdir,"/http2/",name,"_2_average.csv",sep=""))
+data2=read.csv(paste("./data/part_2/power/",subdir,"/http2/",name,"_2_average.csv",sep=""))
 
 
 
@@ -28,7 +28,7 @@ names(data2) <- column_names
 
 
 
-postscript(paste("./data/part_2/",name,"_",subdir,"_average.eps",sep=""), width = 4, height = 6, horizontal = FALSE, onefile = FALSE)
+postscript(paste("./data/part_2/power/",name,"_",subdir,"_average.eps",sep=""), width = 4, height = 6, horizontal = FALSE, onefile = FALSE)
 
 
 p<-ggplot()+geom_smooth(data=data1, aes(x=Time, y=Power, colour='http1'))+

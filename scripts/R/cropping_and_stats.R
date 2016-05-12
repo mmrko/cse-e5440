@@ -26,7 +26,7 @@ std=0
 sums=0
 i=1
 while (i<=runs){
-dir=paste("./data/part_2/",subdir,"/http",http,"/",name,"_",i,".csv",sep="")
+dir=paste("./data/part_2/power/",subdir,"/http",http,"/",name,"_",i,".csv",sep="")
 print(dir)
 
 data= read.csv(dir,sep=",",colClasses=c(NULL,NA))
@@ -52,7 +52,7 @@ means=means+mean(data)
 std=max(std,sd(data))
 
 #print( std)
-sink(paste("./data/part_2/",subdir,"/http",http,"/",name,"_",i,"_cropped.csv",sep=""), append=FALSE, split=FALSE)
+sink(paste("./data/part_2/power/",subdir,"/http",http,"/",name,"_",i,"_cropped.csv",sep=""), append=FALSE, split=FALSE)
 x=1
 for (j in data){
 cat(paste(x,j,sep=','))
@@ -67,7 +67,7 @@ print('Test')
 print(length(data))
 average_data=average_data/runs
 print(length(average_data))
-sink(paste("./data/part_2/",subdir,"/http",http,"/",name,"_",http,"_average.csv",sep=""), append=FALSE, split=FALSE)
+sink(paste("./data/part_2/power/",subdir,"/http",http,"/",name,"_",http,"_average.csv",sep=""), append=FALSE, split=FALSE)
 x=1
 for (i in average_data){
 cat(paste(x,i,sep=','))
@@ -79,7 +79,7 @@ sink()
 
 
 
-sink(paste("stats_",name,"_",http,".txt",sep=""), append=FALSE, split=FALSE)
+sink(paste("./data/part_2/power/stats_",subdir,"_",name,"_",http,".txt",sep=""), append=FALSE, split=FALSE)
 cat(paste('HTTP',http,'\n',sep=""))
 cat('Mean: ')
 cat(means/runs)

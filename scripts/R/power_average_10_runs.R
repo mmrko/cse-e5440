@@ -20,10 +20,10 @@ column_names <- c('Time', 'Power')
 test=NULL
 for (i in seq(1,20)){
 if(i<=10){
-dir=paste("./data/part_2/",subdir,"/http1/",name,"_",i,"_cropped.csv",sep="")
+dir=paste("./data/part_2/power/",subdir,"/http1/",name,"_",i,"_cropped.csv",sep="")
 }else
 {
-	dir=paste("./data/part_2/",subdir,"/http2/",name,"_",(i-10),"_cropped.csv",sep="")
+	dir=paste("./data/part_2/power/,subdir,"/http2/",name,"_",(i-10),"_cropped.csv",sep="")
 }
 print(dir)
 
@@ -40,7 +40,7 @@ names(data[[i]]) <- column_names
 
 #on my computer the plot does not work. 
 
-postscript(paste("./data/part_2/",subdir,"_",name,"_average.eps",sep=""), width = 4, height = 6, horizontal = FALSE, onefile = FALSE)
+postscript(paste("./data/part_2/power/",name,"_",subdir,"_average.eps",sep=""), width = 4, height = 6, horizontal = FALSE, onefile = FALSE)
 
 
 p<-ggplot()+
