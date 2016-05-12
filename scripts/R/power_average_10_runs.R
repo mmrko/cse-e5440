@@ -44,27 +44,36 @@ postscript(paste("./data/part_2/",subdir,"_",name,"_average.eps",sep=""), width 
 
 
 p<-ggplot()+
-	geom_smooth(data=data[[10]], aes(x=Time, y=Power, colour='red'))+
-	geom_smooth(data=data[[11]], aes(x=Time, y=Power, colour='red'))+
-	geom_smooth(data=data[[12]], aes(x=Time, y=Power, colour='red'))+
-	geom_smooth(data=data[[13]], aes(x=Time, y=Power, colour='red'))+
-	geom_smooth(data=data[[14]], aes(x=Time, y=Power, colour='red'))+
-	geom_smooth(data=data[[15]], aes(x=Time, y=Power, colour='red'))+
-	geom_smooth(data=data[[16]], aes(x=Time, y=Power, colour='red'))+
-	geom_smooth(data=data[[17]], aes(x=Time, y=Power, colour='red'))+
-	geom_smooth(data=data[[18]], aes(x=Time, y=Power, colour='red'))+
-	geom_smooth(data=data[[19]], aes(x=Time, y=Power, colour='red'))+
-	geom_smooth(data=data[[20]], aes(x=Time, y=Power, colour='red'))+
+	#htpp2
+	geom_smooth(data=data[[10]], aes(x=Time, y=Power, colour='http2'))+
+	geom_smooth(data=data[[11]], aes(x=Time, y=Power, colour='http2'))+
+	geom_smooth(data=data[[12]], aes(x=Time, y=Power, colour='http2'))+
+	geom_smooth(data=data[[13]], aes(x=Time, y=Power, colour='http2'))+
+	geom_smooth(data=data[[14]], aes(x=Time, y=Power, colour='http2'))+
+	ignore yahoo
+	geom_smooth(data=data[[15]], aes(x=Time, y=Power, colour='http2'))+
+	geom_smooth(data=data[[16]], aes(x=Time, y=Power, colour='http2'))+
+	geom_smooth(data=data[[17]], aes(x=Time, y=Power, colour='http2'))+
+	geom_smooth(data=data[[18]], aes(x=Time, y=Power, colour='http2'))+
+	geom_smooth(data=data[[19]], aes(x=Time, y=Power, colour='http2'))+
+	geom_smooth(data=data[[20]], aes(x=Time, y=Power, colour='http2'))	
 
-	geom_smooth(data=data[[1]], aes(x=Time, y=Power, colour="blue"))+
-	geom_smooth(data=data[[2]], aes(x=Time, y=Power, colour='blue'))+
-	geom_smooth(data=data[[3]], aes(x=Time, y=Power, colour='blue'))+
-	geom_smooth(data=data[[4]], aes(x=Time, y=Power, colour='blue'))+
-	geom_smooth(data=data[[5]], aes(x=Time, y=Power, colour='blue'))+
-	geom_smooth(data=data[[6]], aes(x=Time, y=Power, colour='blue'))+
-	geom_smooth(data=data[[7]], aes(x=Time, y=Power, colour='blue'))+
-	geom_smooth(data=data[[8]], aes(x=Time, y=Power, colour='blue'))+
-	geom_smooth(data=data[[9]], aes(x=Time, y=Power, colour='blue'))
+	#htpp1
+	geom_smooth(data=data[[1]], aes(x=Time, y=Power, colour="http1"))+
+	geom_smooth(data=data[[2]], aes(x=Time, y=Power, colour='http1'))+
+	ignore on yahoo
+	geom_smooth(data=data[[3]], aes(x=Time, y=Power, colour='http1'))+
+	geom_smooth(data=data[[4]], aes(x=Time, y=Power, colour='http1'))+
+	geom_smooth(data=data[[5]], aes(x=Time, y=Power, colour='http1'))+
+	ignore on instagram
+	geom_smooth(data=data[[6]], aes(x=Time, y=Power, colour='http1'))+
+	geom_smooth(data=data[[7]], aes(x=Time, y=Power, colour='http1'))+
+	geom_smooth(data=data[[8]], aes(x=Time, y=Power, colour='http1'))
+	ignore on flickr
+	geom_smooth(data=data[[9]], aes(x=Time, y=Power, colour='http1'))
+
+
+
 
 print(p)
 

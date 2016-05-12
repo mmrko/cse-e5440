@@ -2,26 +2,30 @@
 
 library(Thermimage)
 
+library(base)
+
 args<-commandArgs(TRUE)
 
-if(length(args)!=3){
-stop("usage subdirectory (f.ex. aalto-open) website   1 or 2 for http1 or http2")
+if(length(args)!=4){
+stop("usage: <subdirectory (f.ex. aalto-open)> <website>   <1 or 2 for http1 or http2> <number of runs> " )
 }
-
 
 subdir=args[1]
 name=args[2]
-http=args[3]
-
+http=strtoi(args[3])
+runs=strtoi(args[4])
 min=22
-if(name=='flickr'){max=202} else
+if(name=='flickr'){max=192} else
  if( name=='yahoo'){max=172} else
-  { max=226	}
+  { max=222	}
+
+average_data=mat.or.vec(max-min,1);
+
 means=0
 std=0
 sums=0
-
-for (i in seq(1,10)){
+i=1
+while (i<=runs){
 dir=paste("./data/part_2/",subdir,"/http",http,"/",name,"_",i,".csv",sep="")
 print(dir)
 
@@ -33,7 +37,7 @@ data <- meanEveryN(data[,2], n = 5000)
 #print(dim(data))
 #print(length(data))
 data=data[seq(min,max)]
-
+average_data=average_data+data
 #print(length(data))
 #print(sum(data))
 
@@ -50,27 +54,42 @@ std=max(std,sd(data))
 #print( std)
 sink(paste("./data/part_2/",subdir,"/http",http,"/",name,"_",i,"_cropped.csv",sep=""), append=FALSE, split=FALSE)
 x=1
-for (i in data){
+for (j in data){
+cat(paste(x,j,sep=','))
+cat('\n')
+x=x+1
+}
+sink()
+i=i+1
+}
+
+print('Test')
+print(length(data))
+average_data=average_data/runs
+print(length(average_data))
+sink(paste("./data/part_2/",subdir,"/http",http,"/",name,"_average.csv",sep=""), append=FALSE, split=FALSE)
+x=1
+for (i in average_data){
 cat(paste(x,i,sep=','))
 cat('\n')
 x=x+1
 }
 sink()
 
-}
 
 
 
 sink(paste("stats_",name,"_",http,".txt",sep=""), append=FALSE, split=FALSE)
 cat(paste('HTTP',http,'\n',sep=""))
 cat('Mean: ')
-cat(means/10)
+cat(means/runs)
 cat('\n')
 cat('Standard deviation: ')
 cat(std)
 cat('\n')
 cat('Sum: ')
-cat(sums/10 )
+cat(sums/runs)
 cat('\n\n')
 sink()
+
 
