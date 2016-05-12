@@ -1,0 +1,5 @@
+HTTP1
+Mean: 3.180503
+Standard deviation: 0.7767529
+Sum: 537.505
+

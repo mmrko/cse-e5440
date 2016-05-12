@@ -1,0 +1,5 @@
+HTTP2
+Mean: 3.247423
+Standard deviation: 0.7546067
+Sum: 646.2372
+
