@@ -1,3 +1,0 @@
-flickr:     190s
-instagram:  220s
-yahoo:      170s
