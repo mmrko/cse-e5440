@@ -16,7 +16,7 @@ esac
 APK_FILE="fennec-$BROWSER_VERSION.en-US.android-$ARCHITECTURE.apk"
 
 echo "Uninstalling existing Firefox (if any)..."
-adb uninstall "$PACKAGE_NAME"
+adb $DEVICE uninstall "$PACKAGE_NAME"
 
 echo "Installing $APK_FILE..."
-adb install "$ROOT_DIR/builds/$APK_FILE"
+adb $DEVICE install "$ROOT_DIR/builds/$APK_FILE"

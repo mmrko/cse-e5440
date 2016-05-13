@@ -5,8 +5,8 @@ ROOT_DIR="$(dirname $SCRIPT_DIR)"
 
 source "$SCRIPT_DIR/vars"
 
-adb root >/dev/null
+adb $DEVICE root >/dev/null
 
-adb shell "rm -rf $DEST_DIR/tests"
+adb $DEVICE shell "rm -rf $DEST_DIR/tests"
 
-adb push "$ROOT_DIR/tests" "$DEST_DIR/tests/"
+adb $DEVICE push "$ROOT_DIR/tests" "$DEST_DIR/tests/"

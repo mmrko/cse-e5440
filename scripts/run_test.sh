@@ -17,12 +17,12 @@ source "$SCRIPT_DIR/vars"
 $SCRIPT_DIR/check_connection.sh || exit 1
 
 echo -e "\nClosing any open Firefox..."
-adb shell "am force-stop $PACKAGE_NAME" >/dev/null
+adb $DEVICE shell "am force-stop $PACKAGE_NAME" >/dev/null
 
 echo -e "\nSetting screen brightness.."
-adb shell "settings put system screen_off_timeout 1800000" >/dev/null
-adb shell "settings put system screen_brightness 255" >/dev/null
-adb shell "settings put system screen_auto_brightness 0" >/dev/null
+adb $DEVICE shell "settings put system screen_off_timeout 1800000" >/dev/null
+adb $DEVICE shell "settings put system screen_brightness 255" >/dev/null
+adb $DEVICE shell "settings put system screen_auto_brightness 0" >/dev/null
 
 echo -e "\nUploading test scripts..."
 $ROOT_DIR/scripts/upload_test_scripts.sh
@@ -31,7 +31,7 @@ echo -e "\nSleeping for ${BASE_WAIT_TIME}s..."
 sleep $BASE_WAIT_TIME
 
 echo -e "\nLaunching Firefox..."
-adb shell "am start $PACKAGE_NAME"
+adb $DEVICE shell "am start $PACKAGE_NAME"
 
 echo -e "\nRunning test(s) $TIMES times...\n"
 
@@ -57,7 +57,7 @@ for iteration in $(seq 1 $TIMES); do
 
     BASE_NAVIGATION_WAIT_TIME=$bnwt $SCRIPT_DIR/navigate_to.sh "https://$site"
 
-    adb shell "
+    adb $DEVICE shell "
       cd $DEST_DIR/tests && \
       BASE_TAP_WAIT_TIME=$btwt \
       BASE_SWIPE_WAIT_TIME=$bswt \
@@ -67,7 +67,7 @@ for iteration in $(seq 1 $TIMES); do
     $SCRIPT_DIR/navigate_to.sh "about:blank"
     echo "Done browsing $site."
   done
- 
+
   echo "Sleep for ${BASE_ITERATION_WAIT_TIME}s..."
   sleep $BASE_ITERATION_WAIT_TIME
 
@@ -80,7 +80,7 @@ sleep $BASE_NAVIGATION_WAIT_TIME
 
 if [[ CLOSE_BROWSER_ON_COMPLETE == 1 ]]; then
   echo -e "\nClosing Firefox..."
-  adb shell "am force-stop $PACKAGE_NAME" >/dev/null
+  adb $DEVICE shell "am force-stop $PACKAGE_NAME" >/dev/null
 
   echo -e "\nSleeping for $(($BASE_WAIT_TIME))s..."
   sleep $BASE_WAIT_TIME
