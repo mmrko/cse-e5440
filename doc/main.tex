@@ -2,6 +2,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[]{hyperref}
 \usepackage[justification=centering]{caption}
+\usepackage{tabulary}
+\usepackage{color}
+\newcolumntype{K}[1]{>{\centering\arraybackslash}p{#1}}
 
 \author{
   Raatikka, Marko\\
@@ -190,46 +193,75 @@ An effort was given to follow the best practices of software energy experimentat
 \\ \\
 \textbf{TODOs:}
 \begin{itemize}
-    \item proxy traffic via a VPN to simulate a high latency condition
+    \item fix test suite: omit \url{yahoo.com/style} and remove duplicate navigation to \url{flickr.com/photos/tags}
+    \item proxy traffic via a VPN to simulate high latency conditions
     \item randomize the order of the target websites in the corpus
-    \item increase test run count to at least 10 for better confidence
-    \item increase generated network traffic (increase corpus or implement deeper navigation patterns)
+    \item increase test run count to 10 for better confidence
     \item evaluation of the effect of HTTP2 best practices on energy consumption
     \item Energy utility (kB/J)
-    \item Energy consumption right after high CPU stress (to explain differences in energy consumption per web service)
     \item URL manifest
     \item Average \& std. dev. of network traffic metrics
-\end{itemize}
-
-\subsection{Changes to Part I}
-\begin{itemize}
-    \item added a subpage navigation to instagram.com
-    \item removed swiping prior to navigation
-    \item collected granular network data for a URL manifest
-\end{itemize}
-
-\subsection{Runtimes}
-\begin{itemize}
-    \item Yahoo: 150 s
-    \item Flickr: 170 s
-    \item Instagram: 200 s
 \end{itemize}
 
 
 \subsection{Results}
 
-% Latencies (avg. & std.dev)
+\begin{table}
+    \caption{Energy consumption of the target websites over HTTP1.1 \& HTTP2. HL denotes high latency conditions of +300ms RTT (110-130ms otherwise).}
+    \label{}
+    \begin{tabular}{|l|K{2.25cm}|K{2.75cm}|K{2.75cm}|}
+        \hline
+        \textcolor{blue}{HTTP1.1} / \textcolor{red}{HTTP2} & \textbf{Total energy} (J) & \textbf{Power average} (W) & \textbf{Power std.dev} (W) \\ \hline
+        Flickr & \textcolor{blue}{519.7} / \textcolor{red}{520.1}  &\textcolor{blue}{3.075} / \textcolor{red}{3.077}  &
+        \textcolor{blue}{0.832} / \textcolor{red}{0.748}  \\ \hline
+        Flickr (HL) & \textcolor{blue}{659.8} / \textcolor{red}{532.3}  &\textcolor{blue}{3.315} / \textcolor{red}{3.149}  &
+        \textcolor{blue}{0.841} / \textcolor{red}{0.797}  \\ \hline
 
-    % Aalto open (w/o VPN)
-    % instagram.com     112.747         4.708
-    % yahoo.com         133.282         8.004
-    % flickr.com        131.587         6.611
+        Instagram & \textcolor{blue}{631.4} / \textcolor{red}{646.2} & \textcolor{blue}{3.172} / \textcolor{red}{3.247} & \textcolor{blue}{0.705} / \textcolor{red}{0.754} \\ \hline
 
-    % Aalto closed (w/ VPN)
-    % instagram.com     295.559         56.325
-    % yahoo.com         303.997         77.832
-    % flickr.com        306.019         50.457
+        Instagram (HL) & \textcolor{blue}{659.8} / \textcolor{red}{670.0} & \textcolor{blue}{3.315} / \textcolor{red}{3.366} & \textcolor{blue}{0.841} / \textcolor{red}{0.857} \\ \hline
 
+        Yahoo & \textcolor{blue}{417.4} / \textcolor{red}{413.9} &\textcolor{blue}{2.801} / \textcolor{red}{2.778}  & \textcolor{blue}{0.624} / \textcolor{red}{0.597}  \\ \hline
+        Yahoo (HL) & \textcolor{blue}{447.6} / \textcolor{red}{446.6} &\textcolor{blue}{3.004} / \textcolor{red}{2.997}  & \textcolor{blue}{0.586} / \textcolor{red}{0.611}  \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+    \caption{Network traffic statistics of each target website during the test runs.}
+    \label{}
+    \begin{tabular}{|l|K{2.6cm}|K{2.8cm}|K{2.5cm}|}
+        \hline
+        \textcolor{blue}{HTTP1.1} / \textcolor{red}{HTTP2} & \textbf{Flickr} & \textbf{Instagram} & \textbf{Yahoo} \\ \hline
+        Total Payload (kB) & \textcolor{blue}{63669} / \textcolor{red}{64853}  & \textcolor{blue}{33210} / \textcolor{red}{32664}  &
+        \textcolor{blue}{19833} / \textcolor{red}{20491}  \\ \hline
+        Total Response Time (s) & \textcolor{blue}{1135} / \textcolor{red}{936}  &\textcolor{blue}{117} / \textcolor{red}{170}  &
+        \textcolor{blue}{127} / \textcolor{red}{119}  \\ \hline
+
+        Number of Requests & \textcolor{blue}{587} / \textcolor{red}{606} & \textcolor{blue}{469} / \textcolor{red}{464} & \textcolor{blue}{511} / \textcolor{red}{509} \\ \hline
+
+        Total Bit Rate (kB/s) & \textcolor{blue}{56.1} / \textcolor{red}{69.3} & \textcolor{blue}{283.8} / \textcolor{red}{192.1} & \textcolor{blue}{156.2} / \textcolor{red}{172.2} \\  \hline
+
+        Image Bit Rate (kB/s) & \textcolor{blue}{8.1} / \textcolor{red}{10.2} &\textcolor{blue}{51.9} / \textcolor{red}{33.2}  & \textcolor{blue}{18.8} / \textcolor{red}{24.4}  \\ \hline
+
+        JS Bit Rate (kB/s) & \textcolor{blue}{59.7} / \textcolor{red}{64.3} &\textcolor{blue}{354.5} / \textcolor{red}{301.8}  & \textcolor{blue}{87.2} / \textcolor{red}{87.8}  \\ \hline
+
+        Latency / RTT (ms) & $131.6\pm6.6$\newline(HL: $306\pm50.5$)    & $112.7\pm4.7$\newline(HL: $295.6\pm56.3$) & $133.3\pm8$\newline(HL: $304\pm77.8$) \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{images/average}
+    \caption{foo}
+    \label{fig:average}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{images/average-vpn}
+    \caption{bar}
+    \label{fig:average-vpn}
+\end{figure}
 
 \begin{table}[h!]
     \caption{Energy consumption of HTTP1.1 and HTTP2 over the time frame of 24-395 seconds (from first navigation up until the exit navigation).}
@@ -237,11 +269,6 @@ An effort was given to follow the best practices of software energy experimentat
     \begin{tabular}{lcc}
         \textbf{Site} & \textbf{Visit Duration (s)} & \textbf{Average Payload (kB)} \\
         \hline \vspace{-3mm}\\
-        \textbf{https://yahoo.com} & 150 & 40 324 \\
-        \hspace{1em} /tech \\
-        \hspace{1em} /news \\
-        \hspace{1em} /business \\
-        \hspace{1em} /tv \vspace{1mm}\\
         \textbf{https://flickr.com} & 170 & 64 261 \\
         \hspace{1em} /explore \\
         \hspace{1em} /photos/tags/primavera \\
@@ -255,6 +282,11 @@ An effort was given to follow the best practices of software energy experimentat
         \hspace{1em} /warriors \\
         \hspace{1em} /nba \\
         \hspace{1em} /ufc \vspace{1mm}\\
+        \textbf{https://yahoo.com} & 150 & 20 162 \\
+        \hspace{1em} /tech \\
+        \hspace{1em} /news \\
+        \hspace{1em} /business \\
+        \hspace{1em} /tv \vspace{1mm}\\
     \end{tabular}
 \end{table}
 TBD
