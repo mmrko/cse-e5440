@@ -13,6 +13,7 @@
 \usepackage{tabulary}
 \usepackage{wrapfig}
 
+
 \newcolumntype{K}[1]{>{\centering\arraybackslash}p{#1}}
 \begin{document}
 
@@ -33,9 +34,9 @@
 
 \section{Introduction}
 
-With the increasing computation power and connection speed of mobile phones in recent years, the amount of data flowing through the Internet to mobile end devices continues to grow. While web applications have become ever more complex and the amount of HTML, JavaScript and CSS required to render a web page increases, HTTP1.1 -- the prevailing transfer protocol of today’s web -- has failed to keep up with the pace. 
+With the increasing computation power and connection speed of mobile phones in recent years, the amount of data flowing through the Internet to mobile end devices continues to grow. While web applications have become ever more complex and the amount of HTML, JavaScript and CSS required to render a web page increases, HTTP1.1 -- the prevailing transfer protocol of today’s web -- has failed to keep up with the pace.
 
-The work for a new version of HTTP protocol was set forth by Google in 2012 in the form an open networking protocol called SPDY. Later, in 2015, building on the work done for SPDY, HTTP2 was proposed as the future standard protocol. The biggest improvements HTTP2 introduces over HTTP1.1 are request/response multiplexing (to avoid a so called head-of-line blocking inherent in HTTP1), header compression, prioritization of requests and server push mechanism. 
+The work for a new version of HTTP protocol was set forth by Google in 2012 in the form an open networking protocol called SPDY. Later, in 2015, building on the work done for SPDY, HTTP2 was proposed as the future standard protocol. The biggest improvements HTTP2 introduces over HTTP1.1 are request/response multiplexing (to avoid a so called head-of-line blocking inherent in HTTP1), header compression, prioritization of requests and server push mechanism.
 
 This work sets to study the impact of HTTP2 on mobile power consumption. Previous research on the topic has been done by Varun \emph{et al.} in [1]. However, this study focuses on measuring the energy efficiency of HTTP1.1 vs. HTTP2 on mobile using common, real-life navigation patterns.\\
 
@@ -79,8 +80,8 @@ The wait times referred to above are given as follows:
 The duration of a single test run varied by website: 150s (yahoo.com), 170s (flickr.com) and 200s (instagram.com). In part I of the experiment only six test runs were conducted (3 runs for each protocol in the same network conditions), the results of which are presented in \textbf{Figure 1} for comparison.\\
 
 \centerline{
-    \includegraphics[width=0.5\linewidth]{figs/part_1_average_power}
-    \includegraphics[width=0.5\linewidth]{figs/part_1_smoothed_power}
+    \includegraphics[width=0.5\linewidth]{../../images/part_1_average_power}
+    \includegraphics[width=0.5\linewidth]{../../images/part_1_smoothed_power}
 }
 \begin{center}
     \textbf{Figure 1}: Average power draw of a test run done over HTTP1.1, and smoothed average of all six test runs done over HTTP1.1/HTTP2 during part I.
@@ -97,16 +98,16 @@ The duration of a single test run varied by website: 150s (yahoo.com), 170s (fli
 \begin{tabular}{|l|K{8cm}|K{8.1cm}|K{8cm}|}
     \hline
     \textcolor{blue}{HTTP1.1} / \textcolor{red}{HTTP2} & Total energy (J) & Power average (W) & Power std.dev (W) \\ \hline \hline
-    Flickr & \textcolor{blue}{519.7} / \textcolor{red}{520.1}  &\textcolor{blue}{3.075} / \textcolor{red}{3.077}  & 
+    Flickr & \textcolor{blue}{519.7} / \textcolor{red}{520.1}  &\textcolor{blue}{3.075} / \textcolor{red}{3.077}  &
     \textcolor{blue}{0.832} / \textcolor{red}{0.748}  \\ \hline
-    Flickr (HL) & \textcolor{blue}{659.8} / \textcolor{red}{532.3}  &\textcolor{blue}{3.315} / \textcolor{red}{3.149}  & 
+    Flickr (HL) & \textcolor{blue}{659.8} / \textcolor{red}{532.3}  &\textcolor{blue}{3.315} / \textcolor{red}{3.149}  &
     \textcolor{blue}{0.841} / \textcolor{red}{0.797}  \\ \hline \hline
-    
+
     Instagram & \textcolor{blue}{631.4} / \textcolor{red}{646.2} & \textcolor{blue}{3.172} / \textcolor{red}{3.247} & \textcolor{blue}{0.705} / \textcolor{red}{0.754} \\ \hline
-    
+
     Instagram (HL) & \textcolor{blue}{659.8} / \textcolor{red}{670.0} & \textcolor{blue}{3.315} / \textcolor{red}{3.366} & \textcolor{blue}{0.841} / \textcolor{red}{0.857} \\ \hline \hline
-    
-    Yahoo & \textcolor{blue}{417.4} / \textcolor{red}{413.9} &\textcolor{blue}{2.801} / \textcolor{red}{2.778}  & \textcolor{blue}{0.624} / \textcolor{red}{0.597}  \\ \hline 
+
+    Yahoo & \textcolor{blue}{417.4} / \textcolor{red}{413.9} &\textcolor{blue}{2.801} / \textcolor{red}{2.778}  & \textcolor{blue}{0.624} / \textcolor{red}{0.597}  \\ \hline
     Yahoo (HL) & \textcolor{blue}{447.6} / \textcolor{red}{446.6} &\textcolor{blue}{3.004} / \textcolor{red}{2.997}  & \textcolor{blue}{0.586} / \textcolor{red}{0.611}  \\ \hline
 \end{tabular}
 \vspace{-2mm}
@@ -117,26 +118,26 @@ The duration of a single test run varied by website: 150s (yahoo.com), 170s (fli
 \begin{tabular}{|l|K{7.2cm}|K{8cm}|K{7.5cm}|}
     \hline
     \textcolor{blue}{HTTP1.1} / \textcolor{red}{HTTP2} & Flickr & Instagram & Yahoo \\ \hline \hline
-    Total Payload (kB) & \textcolor{blue}{63669} / \textcolor{red}{64853}  & \textcolor{blue}{33210} / \textcolor{red}{32664}  & 
+    Total Payload (kB) & \textcolor{blue}{63669} / \textcolor{red}{64853}  & \textcolor{blue}{33210} / \textcolor{red}{32664}  &
     \textcolor{blue}{19833} / \textcolor{red}{20491}  \\ \hline
-    Response Time (s) & \textcolor{blue}{1135} / \textcolor{red}{936}  &\textcolor{blue}{117} / \textcolor{red}{170}  & 
+    Response Time (s) & \textcolor{blue}{1135} / \textcolor{red}{936}  &\textcolor{blue}{117} / \textcolor{red}{170}  &
     \textcolor{blue}{127} / \textcolor{red}{119}  \\ \hline
-    
+
     Number of Requests & \textcolor{blue}{587} / \textcolor{red}{606} & \textcolor{blue}{469} / \textcolor{red}{464} & \textcolor{blue}{511} / \textcolor{red}{509} \\ \hline \hline
-    
+
     Total Bit Rate (kB/s) & \textcolor{blue}{56.1} / \textcolor{red}{69.3} & \textcolor{blue}{283.8} / \textcolor{red}{192.1} & \textcolor{blue}{156.2} / \textcolor{red}{172.2} \\  \hline
-    
-    Image Bit Rate (kB/s) & \textcolor{blue}{8.1} / \textcolor{red}{10.2} &\textcolor{blue}{51.9} / \textcolor{red}{33.2}  & \textcolor{blue}{18.8} / \textcolor{red}{24.4}  \\ \hline 
-    
+
+    Image Bit Rate (kB/s) & \textcolor{blue}{8.1} / \textcolor{red}{10.2} &\textcolor{blue}{51.9} / \textcolor{red}{33.2}  & \textcolor{blue}{18.8} / \textcolor{red}{24.4}  \\ \hline
+
     JS Bit Rate (kB/s) & \textcolor{blue}{59.7} / \textcolor{red}{64.3} &\textcolor{blue}{354.5} / \textcolor{red}{301.8}  & \textcolor{blue}{87.2} / \textcolor{red}{87.8}  \\ \hline \hline
-    
+
     Latency / RTT (ms) & $131.6\pm6.6$\newline(HL: $306\pm50.5$)	& $112.7\pm4.7$\newline(HL: $295.6\pm56.3$) & $133.3\pm8$\newline(HL: $304\pm77.8$)	\\ \hline
 \end{tabular}
 \end{center}
 \vspace{8mm}
 \centerline{
-    \includegraphics[width=0.5\linewidth]{figs/average}
-    \includegraphics[width=0.5\linewidth]{figs/average-vpn}
+    \includegraphics[width=0.5\linewidth]{../../images/average}
+    \includegraphics[width=0.5\linewidth]{../../images/average-vpn}
 }
 \vspace{-6mm}
 \begin{center}
