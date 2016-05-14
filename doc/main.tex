@@ -205,7 +205,6 @@ In addition to evaluation of potential power saving mechanisms, a few items are 
     \item URL manifest
     \item Average \& std. dev. of network traffic metrics
 \end{itemize}
-\clearpage
 
 \subsection{Changes to Part I}
 \begin{itemize}
@@ -238,28 +237,27 @@ In addition to evaluation of potential power saving mechanisms, a few items are 
 
 \begin{table}[h!]
 
-    \begin{tabular}{lll}
-        \textbf{Site} & \textbf{Visit duration (s)} & \textbf{Payload (kB)} \\
+    \begin{tabular}{lcc}
+        \textbf{Site} & \textbf{Visit duration (s)} & \textbf{Average Payload (kB)} \\
         \hline \vspace{-3mm}\\
-        \textbf{https://flickr.com} \\
-        \hspace{1em} /expore \\
+        \textbf{https://yahoo.com} & 150 & 40 324 \\
+        \hspace{1em} /tech \\
+        \hspace{1em} /news \\
+        \hspace{1em} /business \\
+        \hspace{1em} /tv \vspace{1mm}\\
+        \textbf{https://flickr.com} & 170 & 64 261 \\
+        \hspace{1em} /explore \\
         \hspace{1em} /photos/tags/primavera \\
         \hspace{1em} /photos/tags/amazing \\
         \hspace{1em} /photos/tags/rural \\
         \hspace{1em} /photos/tags/brazil \vspace{1mm}\\
-        \textbf{https://instagram.com} \\
+        \textbf{https://instagram.com} & 200 & 32 937 \\
         \hspace{1em} /nhl \\
         \hspace{1em} /binghuiliu \\
         \hspace{1em} /jordanspieth \\
         \hspace{1em} /warriors \\
         \hspace{1em} /nba \\
         \hspace{1em} /ufc \vspace{1mm}\\
-        \textbf{https://yahoo.com} \\
-        \hspace{1em} /nhl \\
-        \hspace{1em} /tech \\
-        \hspace{1em} /news \\
-        \hspace{1em} /business \\
-        \hspace{1em} /tv \vspace{1mm}\\
     \end{tabular}
     \caption{Energy consumption of HTTP1.1 and HTTP2 over the time frame of 24-395 seconds (from first navigation up until the exit navigation).}
     \label{table:url_manifest}
