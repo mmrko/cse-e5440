@@ -137,14 +137,14 @@ For more accurate analysis of the effect of the respective network traffic stati
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.73]{images/smoothed_power}
+\includegraphics[width=\linewidth]{images/smoothed_power}
 \caption{Smoothed average power draw of each six test runs over HTTP1.1 and HTTP2.}
 \label{fig:smoothed_power}
 \end{figure}
 
 \begin{figure}[t]
 \centering
-\includegraphics[scale=0.675]{images/average_power}
+\includegraphics[width=\linewidth]{images/average_power}
 \caption{Average power draw and smoothed average of a test run done over HTTP1.1.}
 \label{fig:average_power}
 \end{figure}
@@ -163,7 +163,7 @@ For more accurate analysis of the effect of the respective network traffic stati
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.6]{images/http2_consumes.png}
+\includegraphics[width=\linewidth]{images/http2_consumes.png}
 \caption{The network traffic statistics for single test suite runs over HTTP1.1 and HTTP2.}
 \label{fig:http2_network_traffic}
 \end{figure}
@@ -183,7 +183,7 @@ Some interesting observations can be made from the graph in Figure \ref{fig:aver
 
 Label \emph{C} and \emph{D} represent the power draw when browsing \url{flickr.com} (at 135-250 seconds). The spikes (\emph{D}) were due to layout trashing as referred to earlier. Last, label \emph{E} represents the browsing of \url{instagram.com} (at 260-395 seconds). Judging by the graph, it seems as if Instagram would be the most energy inefficient. However, as the order of target websites in the corpus was not randomized, such conclusions can not be drawn. It might very well be that the progressive increase in the power draw is due to increasing device temperature, or Firefox's excess allocation of memory and/or processes over time.
 
-The energy consumption results summarized in Table \ref{table:energy_consumption} show that the consumption was virtually identical between HTTP1.1 and HTTP2 across the test runs. However, Figure \ref{fig:http2_network_traffic} suggests that HTTP2 had better network performance. For example, HTTP2 spent 20\% less time on average for fetching assets. Thus, it could be argued that HTTP2 had higher energy utility -- 22\% higher kB/s/J based on Figure \ref{fig:http2_network_traffic} statistics.
+The energy consumption results summarized in Table \ref{table:energy_consumption} show that the consumption was virtually identical between HTTP1.1 and HTTP2 across the test runs. However, Figure \ref{fig:http2_network_traffic} suggests that HTTP2 had better network performance. For example, HTTP2 spent 20\% less time on average for fetching assets. Thus, it could be argued that HTTP2 had higher energy utility -- 22\% higher kB/s/J based on Table \ref{table:energy_consumption} and Figure \ref{fig:http2_network_traffic}.
 
 An effort was given to follow the best practices of software energy experimentation as per \textbf{ENERGISE}\footnote{Software energy experimentation best practices: \url{https://github.com/ds4se/chapters/blob/c6f960b5955ef835752f265eed7337ff51cf35e0/abramhindle/energymining.md\#lets-energise-your-software-energy-experiments}} -- a mnemonic coined by the authors of \cite{greenminer}. Due to time constraints the tests were run only on one Firefox version (46.0). Moreover, only three test runs were done for both protocols, which clearly is not enough to draw any statistically significant conclusions. However, in other aspects of the ENERGISE practices the experiment was conducted to the authors' best ability. Especially, the automation of the test suite was a significant achievement, which helped in improving and adjusting the testbed for part II of this study.
 
@@ -289,7 +289,13 @@ An effort was given to follow the best practices of software energy experimentat
         \hspace{1em} /tv \vspace{1mm}\\
     \end{tabular}
 \end{table}
-TBD
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{images/waterfall_instagram}
+    \caption{bar}
+    \label{fig:average-vpn}
+\end{figure}
 
 \subsection{Proposal for Improvements}
 TBD
