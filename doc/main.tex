@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[]{hyperref}
-\usepackage[justification=centering]{caption}
+\usepackage[justification=justified]{caption}
 \usepackage{tabulary}
 \usepackage{color}
 \newcolumntype{K}[1]{>{\centering\arraybackslash}p{#1}}
@@ -203,6 +203,8 @@ Based on part I observations and feedback the following improvements/adjustments
         \end{itemize}
 \end{itemize}
 
+High latency conditions were simulated by tunneling the smartphone network traffic via a VPN located in US west coast. The average ping measured varied around $300\pm60$ms. Accurate high latency RTTs are provided in Table \ref{table:network-stats}.
+
 The goal of part II of the assignment was to propose solutions for improving the energy-efficiency of the mobile application/service studied in part I. Since this study investigated the performance HTTP protocols rather than an individual application/service, the solution is proposed in form of HTTP2 best practices for application developers. The rest of this paper is organized as follows: Chapter \ref{chapter:results-part2} presents the results of part II after applying the aforementioned testbed improvements. Chapter \ref{chapter:discussion-part2} continues with a dicussion of the results and presents an outline for HTTP2 best practices. Last, Chapter \ref{chapter:conclusions} concludes with a summary of the study and suggestions for future work.
 
 \subsection{Results}
@@ -225,7 +227,7 @@ The goal of part II of the assignment was to propose solutions for improving the
 \end{figure}
 
 \begin{table}[h!]
-    \caption{Energy consumption of the target websites over HTTP1.1 \& HTTP2. HL denotes high latency conditions of +300ms RTT (110-130ms otherwise).}
+    \caption{Energy consumption of the target websites over HTTP1.1 \& HTTP2. HL denotes high latency conditions of 300ms RTT (110-130ms otherwise).}
     \label{}
     \begin{tabular}{|l|K{2.25cm}|K{2.75cm}|K{2.75cm}|}
         \hline
@@ -245,8 +247,8 @@ The goal of part II of the assignment was to propose solutions for improving the
 \end{table}
 
 \begin{table}[h!]
-    \caption{Network traffic statistics of each target website during the test runs.}
-    \label{}
+    \caption{Network traffic statistics for each target website during the (low latency) test runs. The average latency under low and high latency conditions is included for comparison.}
+    \label{table:network-stats}
     \begin{tabular}{|l|K{2.6cm}|K{2.8cm}|K{2.5cm}|}
         \hline
         \textcolor{blue}{HTTP1.1} / \textcolor{red}{HTTP2} & \textbf{Flickr} & \textbf{Instagram} & \textbf{Yahoo} \\ \hline
@@ -268,7 +270,7 @@ The goal of part II of the assignment was to propose solutions for improving the
 \end{table}
 
 \begin{table}[h!]
-    \caption{Energy consumption of HTTP1.1 and HTTP2 over the time frame of 24-395 seconds (from first navigation up until the exit navigation).}
+    \caption{URL manifest; the target websites and subpages visited. The payload and RTT values are the average of all the runs (HTTP1.1 and HTTP2) executed in low latency conditions.}
     \label{table:url_manifest}
     \begin{tabular}{lK{2.6cm}K{2.5cm}K{2.25cm}}
         \textbf{Site} & \textbf{Visit Duration} (s) & \textbf{Avg. Payload} (kB) & \textbf{Avg. RTT} (ms) \\
@@ -297,8 +299,8 @@ The goal of part II of the assignment was to propose solutions for improving the
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1.1\linewidth]{images/waterfall_instagram}
-    \caption{bar}
-    \label{fig:average-vpn}
+    \caption{A snippet of the network waterfall for \url{instagram.com/warriors} when browsed over HTTP1.1 and HTTP2 with Firefox 46.0 and Google Chrome 50.0. Browsing \url{instagram.com} over HTTP2 on Firefox 46.0 seemed to suffer from long delays in establishing a TCP connection when fetching image assets.}
+    \label{fig:instagram-waterfall}
 \end{figure}
 
 \clearpage
