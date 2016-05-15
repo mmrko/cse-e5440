@@ -189,24 +189,42 @@ An effort was given to follow the best practices of software energy experimentat
 
 \section{Part II}
 
-\emph{Evaluation of potential power saving mechanisms...}
-\\ \\
-\textbf{TODOs:}
+Based on part I observations and feedback the following improvements/adjustments were made to the testbed:
+
 \begin{itemize}
-    \item fix test suite: omit \url{yahoo.com/style} and remove duplicate navigation to \url{flickr.com/photos/tags}
-    \item proxy traffic via a VPN to simulate high latency conditions
-    \item randomize the order of the target websites in the corpus
-    \item increase test run count to 10 for better confidence
-    \item evaluation of the effect of HTTP2 best practices on energy consumption
-    \item Energy utility (kB/J)
-    \item URL manifest
-    \item Average \& std. dev. of network traffic metrics
+    \item increase of test run count to 10 for better confidence
+    \item traffic throttling via a VPN for simulating high latency conditions
+    \item URL manifest generation and more in-depth network traffic metrics
+    \item test suite adjustments:
+        \begin{itemize}
+        \item changed test suite to be run separately for each target website instead of profiling them all in one go
+        \item omitted \url{yahoo.com/style} from the corpus
+        \item removed duplicate navigation to \url{flickr.com/photos/tags}
+        \end{itemize}
 \end{itemize}
 
+The goal of part II of the assignment was to propose solutions for improving the energy-efficiency of the mobile application/service studied in part I. Since this study investigated the performance HTTP protocols rather than an individual application/service, the solution is proposed in form of HTTP2 best practices for application developers. The rest of this paper is organized as follows: Chapter \ref{chapter:results-part2} presents the results of part II after applying the aforementioned testbed improvements. Chapter \ref{chapter:discussion-part2} continues with a dicussion of the results and presents an outline for HTTP2 best practices. Last, Chapter \ref{chapter:conclusions} concludes with a summary of the study and suggestions for future work.
 
 \subsection{Results}
+\label{chapter:results-part2}
 
-\begin{table}
+adskjads kjjkads jk adsjkadskjakjdsaksd kadskadkjadkjad skjkjdas kj askja dskjakja dksjad ksja kdjskaj kjadskja sdkjadkjad skja dskj dasjkdsjkakajs jkda jka jkas dkjasd kjads jkaksj dksj dkja kj kjakjaksjd kjasd
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{images/average}
+    \caption{foo}
+    \label{fig:average}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{images/average-vpn}
+    \caption{bar}
+    \label{fig:average-vpn}
+\end{figure}
+
+\begin{table}[h!]
     \caption{Energy consumption of the target websites over HTTP1.1 \& HTTP2. HL denotes high latency conditions of +300ms RTT (110-130ms otherwise).}
     \label{}
     \begin{tabular}{|l|K{2.25cm}|K{2.75cm}|K{2.75cm}|}
@@ -226,7 +244,7 @@ An effort was given to follow the best practices of software energy experimentat
     \end{tabular}
 \end{table}
 
-\begin{table}
+\begin{table}[h!]
     \caption{Network traffic statistics of each target website during the test runs.}
     \label{}
     \begin{tabular}{|l|K{2.6cm}|K{2.8cm}|K{2.5cm}|}
@@ -248,20 +266,6 @@ An effort was given to follow the best practices of software energy experimentat
         Latency / RTT (ms) & $131.6\pm6.6$\newline(HL: $306\pm50.5$)    & $112.7\pm4.7$\newline(HL: $295.6\pm56.3$) & $133.3\pm8$\newline(HL: $304\pm77.8$) \\ \hline
     \end{tabular}
 \end{table}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\linewidth]{images/average}
-    \caption{foo}
-    \label{fig:average}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\linewidth]{images/average-vpn}
-    \caption{bar}
-    \label{fig:average-vpn}
-\end{figure}
 
 \begin{table}[h!]
     \caption{Energy consumption of HTTP1.1 and HTTP2 over the time frame of 24-395 seconds (from first navigation up until the exit navigation).}
@@ -297,15 +301,28 @@ An effort was given to follow the best practices of software energy experimentat
     \label{fig:average-vpn}
 \end{figure}
 
-\subsection{Proposal for Improvements}
-TBD
+\clearpage
+
+\subsection{Discussion}
+\label{chapter:discussion-part2}
+
+HTTP2 Best Practices
+Evaluation of the effect of HTTP2 best practices on energy consumption
+\emph{Evaluation of potential power saving mechanisms...}
+
+Turning on the Performance governor to ensure a more static high CPU level lead to instability, and could not therefore be used.
+
+Did you get exactly the same content every time?
+
+What are the potential causes of the difference in energy consumption? Do they transfer data in a different way?
+
+Was believed to be an incompability between the browser and the server's HTTP2 implementation. The disabling of cache might also have affected the functionality.
 
 \subsection{Conclusions}
-Turning on the Performance governor to ensure a more static high CPU level lead to instability, and could not therefore be used.
+\label{chapter:conclusions}
 
 Part II measurements alone took almost 7 hours to run (average test run duration 200s times 120 test runs). It would have been impractical to do the measurements manually.
 
-TBD
 
 \bibliographystyle{plain}
 \bibliography{references}
