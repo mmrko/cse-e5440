@@ -4,6 +4,7 @@
 \usepackage[justification=justified]{caption}
 \usepackage{tabulary}
 \usepackage{color}
+\usepackage{enumitem}
 \newcolumntype{K}[1]{>{\centering\arraybackslash}p{#1}}
 
 \author{
@@ -210,7 +211,34 @@ The goal of part II of the assignment was to propose solutions for improving the
 \subsection{Results}
 \label{chapter:results-part2}
 
+In part II energy consumption and traffic metrcis were captured separately for each target website so that any increase in device temperature or tail energy from previous activity would not be reflected on the power draw of the consecutive run. The \emph{Visit Duration} given in Table \ref{table:url_manifest} denotes the time between the initial navigation to and the exit navigation from a target website. All results have been computed based on this time frame.
 
+\begin{table}[h!]
+    \caption{URL manifest; the target websites and subpages visited. The payload and RTT values are the average of all the runs (HTTP1.1 and HTTP2) executed in low latency conditions.}
+    \label{table:url_manifest}
+    \begin{tabular}{lK{2.6cm}K{2.5cm}K{2.25cm}}
+        \textbf{Site} & \textbf{Visit Duration} (s) & \textbf{Avg. Payload} (kB) & \textbf{Avg. RTT} (ms) \\
+        \hline \vspace{-3mm}\\
+        \textbf{https://flickr.com} & 170 & 64 261 & $131.6\pm6.6$ \\
+        \hspace{1em} /explore \\
+        \hspace{1em} /photos/tags/primavera \\
+        \hspace{1em} /photos/tags/amazing \\
+        \hspace{1em} /photos/tags/rural \\
+        \hspace{1em} /photos/tags/brazil \vspace{1mm}\\
+        \textbf{https://instagram.com} & 200 & 32 937 & $112.7\pm4.7$ \\
+        \hspace{1em} /nhl \\
+        \hspace{1em} /binghuiliu \\
+        \hspace{1em} /jordanspieth \\
+        \hspace{1em} /warriors \\
+        \hspace{1em} /nba \\
+        \hspace{1em} /ufc \vspace{1mm}\\
+        \textbf{https://yahoo.com} & 150 & 20 162 & $133.3\pm8$ \\
+        \hspace{1em} /tech \\
+        \hspace{1em} /news \\
+        \hspace{1em} /business \\
+        \hspace{1em} /tv \vspace{1mm}\\
+    \end{tabular}
+\end{table}
 
 \begin{figure}[h!]
     \centering
@@ -269,33 +297,6 @@ The goal of part II of the assignment was to propose solutions for improving the
     \end{tabular}
 \end{table}
 
-\begin{table}[h!]
-    \caption{URL manifest; the target websites and subpages visited. The payload and RTT values are the average of all the runs (HTTP1.1 and HTTP2) executed in low latency conditions.}
-    \label{table:url_manifest}
-    \begin{tabular}{lK{2.6cm}K{2.5cm}K{2.25cm}}
-        \textbf{Site} & \textbf{Visit Duration} (s) & \textbf{Avg. Payload} (kB) & \textbf{Avg. RTT} (ms) \\
-        \hline \vspace{-3mm}\\
-        \textbf{https://flickr.com} & 170 & 64 261 & $131.6\pm6.6$ \\
-        \hspace{1em} /explore \\
-        \hspace{1em} /photos/tags/primavera \\
-        \hspace{1em} /photos/tags/amazing \\
-        \hspace{1em} /photos/tags/rural \\
-        \hspace{1em} /photos/tags/brazil \vspace{1mm}\\
-        \textbf{https://instagram.com} & 200 & 32 937 & $112.7\pm4.7$ \\
-        \hspace{1em} /nhl \\
-        \hspace{1em} /binghuiliu \\
-        \hspace{1em} /jordanspieth \\
-        \hspace{1em} /warriors \\
-        \hspace{1em} /nba \\
-        \hspace{1em} /ufc \vspace{1mm}\\
-        \textbf{https://yahoo.com} & 150 & 20 162 & $133.3\pm8$ \\
-        \hspace{1em} /tech \\
-        \hspace{1em} /news \\
-        \hspace{1em} /business \\
-        \hspace{1em} /tv \vspace{1mm}\\
-    \end{tabular}
-\end{table}
-
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1.1\linewidth]{images/waterfall_instagram}
@@ -308,17 +309,20 @@ The goal of part II of the assignment was to propose solutions for improving the
 \subsection{Discussion}
 \label{chapter:discussion-part2}
 
-HTTP2 Best Practices
-Evaluation of the effect of HTTP2 best practices on energy consumption
-\emph{Evaluation of potential power saving mechanisms...}
-
 Turning on the Performance governor to ensure a more static high CPU level lead to instability, and could not therefore be used.
-
-Did you get exactly the same content every time?
-
-What are the potential causes of the difference in energy consumption? Do they transfer data in a different way?
-
 Was believed to be an incompability between the browser and the server's HTTP2 implementation. The disabling of cache might also have affected the functionality.
+
+
+The following question were laid out based on part I results:
+\\
+\begin{itemize}[label={}]
+    \item \emph{Did you get exactly the same content every time?}\\\\
+    Slight variance in the total payload size and number of requests for each of the test runs was observed. This was likely due to varying network conditions both in the client's and the server's end. However, based on the raw data and author's observations these changes were minimal enough to be cancelled out by having the test suite executed multiple times (10). No attempt was made for automatically detecting significant changes in the network conditions during the experiment. Only a couple of test runs were re-run as the power draw was noticeably different (contained anomalies).\\
+    \item \emph{What are the potential causes of the difference in energy consumption? Do they transfer data in a different way?}
+
+\end{itemize}
+
+HTTP2 Best Practices
 
 \subsection{Conclusions}
 \label{chapter:conclusions}
