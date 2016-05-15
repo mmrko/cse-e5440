@@ -208,19 +208,19 @@ The goal of part II of the assignment was to propose solutions for improving the
 \subsection{Results}
 \label{chapter:results-part2}
 
-adskjads kjjkads jk adsjkadskjakjdsaksd kadskadkjadkjad skjkjdas kj askja dskjakja dksjad ksja kdjskaj kjadskja sdkjadkjad skja dskj dasjkdsjkakajs jkda jka jkas dkjasd kjads jkaksj dksj dkja kj kjakjaksjd kjasd
+
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{images/average}
-    \caption{foo}
+    \caption{Average power draw of HTTP1.1 and HTTP2 per target website (low latency, 100-130ms).}
     \label{fig:average}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{images/average-vpn}
-    \caption{bar}
+    \caption{Average power draw of HTTP1.1 and HTTP2 per target website (high latency, 300ms).}
     \label{fig:average-vpn}
 \end{figure}
 
@@ -270,23 +270,23 @@ adskjads kjjkads jk adsjkadskjakjdsaksd kadskadkjadkjad skjkjdas kj askja dskjak
 \begin{table}[h!]
     \caption{Energy consumption of HTTP1.1 and HTTP2 over the time frame of 24-395 seconds (from first navigation up until the exit navigation).}
     \label{table:url_manifest}
-    \begin{tabular}{lcc}
-        \textbf{Site} & \textbf{Visit Duration (s)} & \textbf{Average Payload (kB)} \\
+    \begin{tabular}{lK{2.6cm}K{2.5cm}K{2.25cm}}
+        \textbf{Site} & \textbf{Visit Duration} (s) & \textbf{Avg. Payload} (kB) & \textbf{Avg. RTT} (ms) \\
         \hline \vspace{-3mm}\\
-        \textbf{https://flickr.com} & 170 & 64 261 \\
+        \textbf{https://flickr.com} & 170 & 64 261 & $131.6\pm6.6$ \\
         \hspace{1em} /explore \\
         \hspace{1em} /photos/tags/primavera \\
         \hspace{1em} /photos/tags/amazing \\
         \hspace{1em} /photos/tags/rural \\
         \hspace{1em} /photos/tags/brazil \vspace{1mm}\\
-        \textbf{https://instagram.com} & 200 & 32 937 \\
+        \textbf{https://instagram.com} & 200 & 32 937 & $112.7\pm4.7$ \\
         \hspace{1em} /nhl \\
         \hspace{1em} /binghuiliu \\
         \hspace{1em} /jordanspieth \\
         \hspace{1em} /warriors \\
         \hspace{1em} /nba \\
         \hspace{1em} /ufc \vspace{1mm}\\
-        \textbf{https://yahoo.com} & 150 & 20 162 \\
+        \textbf{https://yahoo.com} & 150 & 20 162 & $133.3\pm8$ \\
         \hspace{1em} /tech \\
         \hspace{1em} /news \\
         \hspace{1em} /business \\
@@ -296,7 +296,7 @@ adskjads kjjkads jk adsjkadskjakjdsaksd kadskadkjadkjad skjkjdas kj askja dskjak
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\linewidth]{images/waterfall_instagram}
+    \includegraphics[width=1.1\linewidth]{images/waterfall_instagram}
     \caption{bar}
     \label{fig:average-vpn}
 \end{figure}
