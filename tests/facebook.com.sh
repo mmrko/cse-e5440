@@ -1,5 +1,5 @@
 #!/bin/sh
-#Facebook
+# Facebook
 
 alias tap="input tap"
 alias swipe="input touchscreen swipe"
