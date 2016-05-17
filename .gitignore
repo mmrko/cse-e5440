@@ -56,3 +56,10 @@ Rplots.pdf
 *.swl
 
 !.gitkeep
+
+###IntelliJ###
+
+*.iml
+*.ipr
+*.iws
+.idea/
