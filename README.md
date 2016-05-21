@@ -55,7 +55,7 @@ CLOSE_BROWSER_ON_COMPLETE=0 ./scripts/run_test.sh "yahoo.com instagram.com" 3
 # Project structure
 
 * [./assets](./assets): static assets
-* [./builds](./builds): `i386` and `arm` builds for Firefox to use with the the emulator/device
+* [./builds](./builds): `i386` and `arm` builds for Firefox to use with the emulator/device
 * [./data](./data): power/network traffic measurement data
 * [./doc](./doc): assignment & poster presentation documents
 * [./scripts](./scripts): scripts for running the test suite & R scripts for dataviz
