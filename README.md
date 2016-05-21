@@ -49,7 +49,7 @@ CLOSE_BROWSER_ON_COMPLETE=0 ./scripts/run_test.sh "yahoo.com instagram.com" 3
 
 * [./scripts/install_browser.sh](./scripts/install_browser.sh): install Firefox 46.0 to the device/emulator
 * [./scripts/toggle_cache_config.sh](./scripts/toggle_cache_config.sh): toggle Firefox cache config settings
-* [./scripts/open_firefox_config.sh](./scripts/open_firefox_config.sh): open Firefox config page (`about:config`). HTTP2 support can be toggle using the `network.http.spdy.enabled.http2` flag
+* [./scripts/open_firefox_config.sh](./scripts/open_firefox_config.sh): open Firefox config page (`about:config`). HTTP2 support can be toggled using the `network.http.spdy.enabled.http2` flag
 * [./scripts/build_firefox.sh](./scripts/build_firefox.sh): if you're crazy enough you can use this to build Firefox from source (takes a ton of time, ~30min)
 
 # Project structure
